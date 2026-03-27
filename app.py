@@ -6,12 +6,21 @@ from docx import Document
 # LOAD PASSENGER DATA
 # -------------------------
 
+
 @st.cache_data
 def load_pax_data():
-    return pd.read_csv("pax_data.csv")
+    df = pd.read_csv("pax_data.csv")
 
-pax_df = load_pax_data()
+    # 🔧 Remove bad rows
+    df = df.dropna()
 
+    # 🔧 Clean types
+    df["zone"] = df["zone"].astype(str).str.strip()
+    df["pax"] = df["pax"].astype(int)
+    df["summer"] = df["summer"].astype(float)
+    df["winter"] = df["winter"].astype(float)
+
+    return df
 # -------------------------
 # ✅ ADD TABLES HERE (TOP LEVEL)
 # -------------------------
@@ -40,6 +49,8 @@ def pax_awu(zone, pax, season):
         return 0
 
     return float(row.iloc[0][season])
+
+
 def generate_release(data):
     ...
     

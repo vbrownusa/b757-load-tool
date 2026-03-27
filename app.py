@@ -86,7 +86,22 @@ def cargo_awu(vals):
 
 cargo = cargo_awu([c1,c2,c3,c4])
 
-fuel = rf - tf
+fuel_raw = rf - tf
+
+def fuel_awu(f):
+    r = math.ceil(f/100)*100
+    table = {
+        29100: 29104.1,
+        30000: 30004.0,
+        35000: 35003.3,
+        40000: 40002.5
+    }
+    for k in sorted(table):
+        if k >= r:
+            return table[k]
+    return table[max(table)]
+
+fuel = fuel_awu(fuel_raw)
 
 zfw = BOW + za + zb + zc + sum(bags) + sum(cargo)
 tow = zfw + fuel

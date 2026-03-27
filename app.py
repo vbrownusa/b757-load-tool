@@ -62,7 +62,29 @@ bags = [
     bag_awu(b3,2),
     bag_awu(b4,3)
 ]
-cargo = [c1, c2, c3, c4]
+import math
+
+cargo_rows = [
+    (499.4,499.6,500.3,500.6),
+    (998.7,999.2,1000.7,1001.3),
+    (1498.1,1498.8,1501.0,1501.9),
+    (1997.5,1998.4,2001.4,2002.6),
+    (2496.8,2498.0,2501.7,2503.2),
+    (2996.2,2997.5,3002.1,3003.8),
+    (4494.3,4495.6,4503.0,4504.7),
+    (5495.5,5496.8,5503.9,5505.7),
+    (7004.8,7006.2,7014.6,7016.6),
+]
+
+def cargo_awu(vals):
+    rounded = [math.ceil(v/100)*100 for v in vals]
+    for row in cargo_rows:
+        caps = [int(x//1000)*1000 for x in row]
+        if all(c >= r for c,r in zip(caps,rounded)):
+            return row
+    return [0,0,0,0]
+
+cargo = cargo_awu([c1,c2,c3,c4])
 
 fuel = rf - tf
 

@@ -8,7 +8,7 @@ from docx import Document
 def generate_release(data):
     doc = Document()
 
-    def add(text, bold=False):
+def add(text, bold=False):
         p = doc.add_paragraph()
         run = p.add_run(text)
         run.bold = bold

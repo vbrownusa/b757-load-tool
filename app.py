@@ -33,6 +33,8 @@ ZONE_C = { ... }
 # FUNCTIONS
 # -------------------------
 
+pax_df = load_pax_data()
+
 def pax_awu(zone, pax, season):
     if pax == 0:
         return 0

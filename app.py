@@ -2,6 +2,92 @@ import streamlit as st
 import math
 from docx import Document
 from docx.shared import Pt
+
+def generate_release(data):
+
+    doc = Document()
+
+    # --- STYLE ---
+    style = doc.styles['Normal']
+    font = style.font
+    font.name = 'Calibri'
+    font.size = Pt(12)
+
+    pf = style.paragraph_format
+    pf.space_before = Pt(0)
+    pf.space_after = Pt(0)
+    pf.line_spacing = 1.0
+
+    def add(text, bold=False, size=12):
+        p = doc.add_paragraph()
+        run = p.add_run(text)
+        run.bold = bold
+        run.font.name = 'Calibri'
+        run.font.size = Pt(size)
+
+    # --- HEADER ---
+    add("B757 Weight and Balance Key", True, 14)
+
+    # --- BOW ---
+    add("WEIGHT AND BALANCE SUMMARY", True)
+    add(f"BOW: {data['bow']:.1f}")
+
+    # --- PASSENGERS ---
+    add("PASSENGERS", True)
+    add(f"{data['zoneA_pax']} pax  Zone A: {data['zoneA']:.1f}")
+    add(f"{data['zoneB_pax']} pax  Zone B: {data['zoneB']:.1f}")
+    add(f"{data['zoneC_pax']} pax  Zone C: {data['zoneC']:.1f}")
+
+    # --- BAGGAGE ---
+    add("BAGGAGE (DOMESTIC)", True)
+    add(f"{data['bag1_ct']} bags  Bin 1: {data['bag1']:.1f}")
+    add(f"{data['bag2_ct']} bags  Bin 2: {data['bag2']:.1f}")
+    add(f"{data['bag3_ct']} bags  Bin 3: {data['bag3']:.1f}")
+    add(f"{data['bag4_ct']} bags  Bin 4: {data['bag4']:.1f}")
+
+    # --- CARGO ---
+    add("REVENUE CARGO", True)
+    add(f"{data['cargo1']} lbs  Bin 1: {data['cargo_vals'][0]:.1f}")
+    add(f"{data['cargo2']} lbs  Bin 2: {data['cargo_vals'][1]:.1f}")
+    add(f"{data['cargo3']} lbs  Bin 3: {data['cargo_vals'][2]:.1f}")
+    add(f"{data['cargo4']} lbs  Bin 4: {data['cargo_vals'][3]:.1f}")
+
+    # --- ZFW ---
+    add(f"ADJUSTED ZFW: {data['zfw']:.1f} lbs", True)
+
+    # --- FUEL ---
+    add("FUEL", True)
+    add(f"Ramp Fuel: {data['ramp']:.1f} lbs")
+    add(f"Taxi Fuel: {data['taxi']:.1f} lbs")
+    add(f"Takeoff Fuel: {data['tof']:.1f} lbs")
+    add(f"Fuel AWU: {data['fuel_awu']:.1f}")
+
+    # --- TOW ---
+    add(f"PLANNED TAKEOFF WEIGHT: {data['tow']:.1f} lbs", True)
+
+    # --- CG ---
+    add("CG LIMIT CHECK (INTERPOLATED)", True)
+    add(
+        f"ZFW ({data['zfw_w']:,} lbs): CG {data['zfw_cg']:.1f}% | "
+        f"{data['zfw_fwd']:.2f}–{data['zfw_aft']:.2f}"
+    )
+    add(
+        f"TOW ({data['tow_w']:,} lbs): CG {data['tow_cg']:.1f}% | "
+        f"{data['tow_fwd']:.2f}–{data['tow_aft']:.2f}"
+    )
+
+    # --- TRIM ---
+    add("STABILIZER TRIM", True)
+    add(f"Planned TOW: {data['tow_w']:,} lbs")
+    add(f"Planned CG: {data['tow_cg']:.1f}%")
+    add(f"Trim: {data['trim']} ANU")
+
+    file = "B757_Release.docx"
+    doc.save(file)
+
+    return file
+
+
 st.set_page_config(layout="wide")
 season = st.radio("Season", ["summer", "winter"], horizontal=True)
 BOW = 129621.4

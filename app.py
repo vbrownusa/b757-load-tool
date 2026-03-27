@@ -126,9 +126,9 @@ tf = st.number_input("Taxi Fuel", 0)
 
 BOW = 129621.4
 
-za = pax_awu(ZONE_A, a, season)
-zb = pax_awu(ZONE_B, b, season)
-zc = pax_awu(ZONE_C, c, season)
+za = pax_awu(pax_df, "A", a, season)
+zb = pax_awu(pax_df, "B", b, season)
+zc = pax_awu(pax_df, "C", c, season)
 
 bags = [b1*20, b2*20, b3*20, b4*20]
 cargo = [c1, c2, c3, c4]

@@ -5,20 +5,19 @@ from docx import Document
 # -------------------------
 # LOAD PASSENGER DATA
 # -------------------------
-
-
 @st.cache_data
 def load_pax_data():
     df = pd.read_csv("pax_data.csv")
 
-    # 🔧 Remove bad rows
+    # Clean column names
+    df.columns = df.columns.str.strip().str.lower()
+
+    # Drop bad rows
     df = df.dropna()
 
-    # 🔧 Clean types
-    df["zone"] = df["zone"].astype(str).str.strip()
+    # Clean values
+    df["zone"] = df["zone"].astype(str).str.strip().str.upper()
     df["pax"] = df["pax"].astype(int)
-    df["summer"] = df["summer"].astype(float)
-    df["winter"] = df["winter"].astype(float)
 
     return df
 # -------------------------

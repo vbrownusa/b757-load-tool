@@ -19,8 +19,12 @@ ZONE_C = { ... }
 def pax_awu(zone_dict, pax, season):
     if pax == 0:
         return 0
-    return zone_dict[pax][0] if season == "summer" else zone_dict[pax][1]
 
+    if pax not in zone_dict:
+        st.error(f"Missing AWU data for {pax} pax")
+        return 0
+
+    return zone_dict[pax][0] if season == "summer" else zone_dict[pax][1]
 def generate_release(data):
     ...
     

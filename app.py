@@ -24,15 +24,22 @@ ZONE_C = { ... }
 # FUNCTIONS
 # -------------------------
 
-def pax_awu(zone_dict, pax, season):
+def pax_awu(zone, pax, season):
     if pax == 0:
         return 0
 
-    if pax not in zone_dict:
+    # 🔧 FORCE TYPES
+    df = pax_df.copy()
+    df["pax"] = df["pax"].astype(int)
+    df["zone"] = df["zone"].astype(str)
+
+    row = df[(df["zone"] == zone) & (df["pax"] == int(pax))]
+
+    if row.empty:
         st.error(f"Missing AWU data for {pax} pax")
         return 0
 
-    return zone_dict[pax][0] if season == "summer" else zone_dict[pax][1]
+    return float(row.iloc[0][season])
 def generate_release(data):
     ...
     

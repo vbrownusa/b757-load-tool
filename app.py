@@ -238,3 +238,54 @@ st.write(f"{status(zfw_cg,zfw_fwd,zfw_aft)} ZFW CG {zfw_cg:.1f}%")
 st.write(f"{status(tow_cg,tow_fwd,tow_aft)} TOW CG {tow_cg:.1f}%")
 
 st.write(f"### Trim: {trim} ANU")
+
+
+report_data = {
+    "bow": BOW,
+
+    "zoneA_pax": a,
+    "zoneB_pax": b,
+    "zoneC_pax": c,
+
+    "zoneA": za,
+    "zoneB": zb,
+    "zoneC": zc,
+
+    "bag1_ct": b1,
+    "bag2_ct": b2,
+    "bag3_ct": b3,
+    "bag4_ct": b4,
+
+    "bag1": bags[0],
+    "bag2": bags[1],
+    "bag3": bags[2],
+    "bag4": bags[3],
+
+    "cargo1": c1,
+    "cargo2": c2,
+    "cargo3": c3,
+    "cargo4": c4,
+
+    "cargo_vals": cargo,
+
+    "zfw": zfw,
+    "tow": tow,
+
+    "ramp": rf,
+    "taxi": tf,
+    "tof": rf - tf,
+    "fuel_awu": fuel,
+
+    "zfw_w": zfw_w,
+    "tow_w": tow_w,
+
+    "zfw_cg": zfw_cg,
+    "tow_cg": tow_cg,
+
+    "zfw_fwd": zfw_fwd,
+    "zfw_aft": zfw_aft,
+    "tow_fwd": tow_fwd,
+    "tow_aft": tow_aft,
+
+    "trim": trim
+}

@@ -1,1 +1,81 @@
+import streamlit as st
+import math
 
+st.set_page_config(layout="wide")
+
+BOW = 129621.4
+
+def round100(x): return int(round(x/100))*100
+def cg(x): return (x%1000)/10
+def interp(x,x1,x2,y1,y2): return y1+(y2-y1)*(x-x1)/(x2-x1)
+def qtr(x): return round(x*4)/4
+
+def frac(x):
+    w=int(x);f=round(x-w,2)
+    return f"{w}{ {0.25:'¼',0.5:'½',0.75:'¾'}.get(f,'') }"
+
+st.title("✈️ B757 Dispatch Tool")
+
+col1,col2,col3 = st.columns(3)
+
+with col1:
+    a = st.number_input("Zone A",0,54)
+    b = st.number_input("Zone B",0,80)
+    c = st.number_input("Zone C",0,84)
+
+with col2:
+    b1 = st.number_input("Bin1",0)
+    b2 = st.number_input("Bin2",0)
+    b3 = st.number_input("Bin3",0)
+    b4 = st.number_input("Bin4",0)
+
+with col3:
+    c1 = st.number_input("Cargo1",0)
+    c2 = st.number_input("Cargo2",0)
+    c3 = st.number_input("Cargo3",0)
+    c4 = st.number_input("Cargo4",0)
+
+rf = st.number_input("Ramp Fuel",0)
+tf = st.number_input("Taxi Fuel",0)
+
+za = a * 190
+zb = b * 190
+zc = c * 190
+
+bags = [b1*20, b2*20, b3*20, b4*20]
+cargo = [c1, c2, c3, c4]
+
+fuel = rf - tf
+
+zfw = BOW + za + zb + zc + sum(bags) + sum(cargo)
+tow = zfw + fuel
+
+zfw_w = round100(zfw)
+tow_w = round100(tow)
+
+zfw_cg = cg(zfw)
+tow_cg = cg(tow)
+
+zfw_fwd = interp(zfw_w,175000,180000,11.4,11.2)
+zfw_aft = interp(zfw_w,175000,180000,34.3,34.8)
+
+tow_fwd = interp(tow_w,205000,210000,9.7,9.4)
+tow_aft = interp(tow_w,205000,210000,37.2,37.6)
+
+def status(val,f,a):
+    return "🟢" if f<=val<=a else "🔴"
+
+t1 = interp(tow_cg,29,34,3.5,3.0)
+t2 = interp(tow_cg,29,34,3.75,3.25)
+trim = frac(qtr(interp(tow_w,200000,220000,t1,t2)))
+
+st.divider()
+st.subheader("Results")
+
+st.write(f"ZFW: {zfw:.1f}")
+st.write(f"TOW: {tow:.1f}")
+
+st.write(f"{status(zfw_cg,zfw_fwd,zfw_aft)} ZFW CG {zfw_cg:.1f}%")
+st.write(f"{status(tow_cg,tow_fwd,tow_aft)} TOW CG {tow_cg:.1f}%")
+
+st.write(f"### Trim: {trim} ANU")

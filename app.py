@@ -70,21 +70,28 @@ def generate_release(data):
 # -------------------------
 # SIMPLE TEST UI
 # -------------------------
+st.title("B757 Dispatch Tool")
 
-st.title("Test App")
+season = st.radio("Season", ["summer", "winter"], horizontal=True)
 
-data = {
-    "zoneA": 1000,
-    "zoneB": 2000,
-    "zoneC": 3000,
-    "bag1": 100,
-    "bag2": 200,
-    "bag3": 300,
-    "bag4": 400,
-    "cargo_vals": [100, 200, 300, 400]
-}
+col1, col2, col3 = st.columns(3)
 
-if st.button("Generate"):
-    file = generate_release(data)
-    with open(file, "rb") as f:
-        st.download_button("Download", f, file_name=file)
+with col1:
+    a = st.number_input("Zone A", 0, 54)
+    b = st.number_input("Zone B", 0, 80)
+    c = st.number_input("Zone C", 0, 84)
+
+with col2:
+    b1 = st.number_input("Bin 1 Bags", 0)
+    b2 = st.number_input("Bin 2 Bags", 0)
+    b3 = st.number_input("Bin 3 Bags", 0)
+    b4 = st.number_input("Bin 4 Bags", 0)
+
+with col3:
+    c1 = st.number_input("Cargo Bin 1", 0)
+    c2 = st.number_input("Cargo Bin 2", 0)
+    c3 = st.number_input("Cargo Bin 3", 0)
+    c4 = st.number_input("Cargo Bin 4", 0)
+
+rf = st.number_input("Ramp Fuel", 0)
+tf = st.number_input("Taxi Fuel", 0)

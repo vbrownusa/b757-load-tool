@@ -1,6 +1,7 @@
 import streamlit as st
 import math
-
+from docx import Document
+from docx.shared import Pt
 st.set_page_config(layout="wide")
 season = st.radio("Season", ["summer", "winter"], horizontal=True)
 BOW = 129621.4

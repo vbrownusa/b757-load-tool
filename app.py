@@ -1,6 +1,35 @@
 import streamlit as st
 from docx import Document
 
+import streamlit as st
+from docx import Document
+
+# -------------------------
+# ✅ ADD TABLES HERE (TOP LEVEL)
+# -------------------------
+
+ZONE_A = { ... }
+ZONE_B = { ... }
+ZONE_C = { ... }
+
+# -------------------------
+# FUNCTIONS
+# -------------------------
+
+def pax_awu(zone_dict, pax, season):
+    if pax == 0:
+        return 0
+    return zone_dict[pax][0] if season == "summer" else zone_dict[pax][1]
+
+def generate_release(data):
+    ...
+    
+# -------------------------
+# UI (BOTTOM)
+# -------------------------
+
+st.title("B757 Dispatch Tool")
+
 # -------------------------
 # TEST FUNCTION (CLEAN)
 # -------------------------

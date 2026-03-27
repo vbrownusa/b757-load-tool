@@ -1,3 +1,12 @@
+import streamlit as st
+import pandas as pd
+from docx import Document
+
+@st.cache_data
+def load_pax_data():
+    return pd.read_csv("pax_data.csv")
+    
+
 import pandas as pd
 @st.cache_data
 def load_pax_data():

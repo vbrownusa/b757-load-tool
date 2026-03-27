@@ -54,7 +54,7 @@ def generate_release(data):
 # UI (BOTTOM)
 # -------------------------
 
-st.title("B757 Dispatch Tool")
+st.title("B757 Weight and Balance Tool")
 
 # -------------------------
 # TEST FUNCTION (CLEAN)

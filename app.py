@@ -129,7 +129,8 @@ za = pax_awu(pax_df, "A", a, season)
 zb = pax_awu(pax_df, "B", b, season)
 zc = pax_awu(pax_df, "C", c, season)
 
-bags = [b1*20, b2*20, b3*20, b4*20]
+bags = [b1 * 32, b2 * 32, b3 * 32, b4 * 32]
+
 cargo = [c1, c2, c3, c4]
 
 zfw = BOW + za + zb + zc + sum(bags) + sum(cargo)

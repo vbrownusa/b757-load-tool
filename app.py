@@ -4,7 +4,23 @@ import math
 st.set_page_config(layout="wide")
 season = st.radio("Season", ["summer", "winter"], horizontal=True)
 BOW = 129621.4
+zone_A = {
+    1:(199.8,199.8),
+    2:(299.6,299.5),
+    54:(8888.1,9187.8)
+}
 
+zone_B = {
+    1:(200.0,200.0),
+    2:(299.9,299.9),
+    80:(13196.6,13596.5)
+}
+
+zone_C = {
+    1:(200.1,200.2),
+    2:(300.3,300.3),
+    84:(13912.3,14312.7)
+}
 def round100(x): return int(round(x/100))*100
 def cg(x): return (x%1000)/10
 def interp(x,x1,x2,y1,y2): return y1+(y2-y1)*(x-x1)/(x2-x1)

@@ -76,10 +76,11 @@ season = st.radio("Season", ["summer", "winter"], horizontal=True)
 
 col1, col2, col3 = st.columns(3)
 
+
 with col1:
-    a = st.number_input("Zone A", 0, 54)
-    b = st.number_input("Zone B", 0, 80)
-    c = st.number_input("Zone C", 0, 84)
+    a = int(st.number_input("Zone A", min_value=0, max_value=54, step=1))
+    b = int(st.number_input("Zone B", min_value=0, max_value=80, step=1))
+    c = int(st.number_input("Zone C", min_value=0, max_value=84, step=1))
 
 with col2:
     b1 = st.number_input("Bin 1 Bags", 0)

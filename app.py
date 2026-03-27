@@ -347,7 +347,7 @@ report_data = {
     "tow_aft": tow_aft,
 
     "trim": trim
-
+    
 def generate_release(data):
 
     doc = Document()

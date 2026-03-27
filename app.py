@@ -96,14 +96,13 @@ ZONE_C = {1:(200.1,200.2),2:(300.3,300.3),3:(500.4,500.5),4:(700.6,700.6),5:(800
 74:(12210.8,12611.1),75:(12411.0,12811.3),76:(12511.1,12911.5),77:(12711.3,13111.6),
 78:(12911.4,13311.8),79:(13011.6,13411.9),80:(13211.7,13612.1),81:(13411.8,13812.2),
 82:(13512.0,13912.4),83:(13712.1,14112.5),84:(13912.3,14312.7)
-}
 
-    # --- BAGGAGE ---
-    add("BAGGAGE (DOMESTIC)", True)
-    add(f"{data['bag1_ct']} bags  Bin 1: {data['bag1']:.1f}")
-    add(f"{data['bag2_ct']} bags  Bin 2: {data['bag2']:.1f}")
-    add(f"{data['bag3_ct']} bags  Bin 3: {data['bag3']:.1f}")
-    add(f"{data['bag4_ct']} bags  Bin 4: {data['bag4']:.1f}")
+ # --- BAGGAGE ---
+add("BAGGAGE (DOMESTIC)", True)
+add(f"{data['bag1_ct']} bags  Bin 1: {data['bag1']:.1f}")
+add(f"{data['bag2_ct']} bags  Bin 2: {data['bag2']:.1f}")
+add(f"{data['bag3_ct']} bags  Bin 3: {data['bag3']:.1f}")
+add(f"{data['bag4_ct']} bags  Bin 4: {data['bag4']:.1f}")
 
     # --- CARGO ---
     add("REVENUE CARGO", True)

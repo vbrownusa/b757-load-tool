@@ -96,7 +96,6 @@ def generate_release(data):
 # -------------------------
 # SIMPLE TEST UI
 # -------------------------
-st.title("B757 Dispatch Tool")
 
 season = st.radio("Season", ["summer", "winter"], horizontal=True)
 

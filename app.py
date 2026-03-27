@@ -289,3 +289,14 @@ report_data = {
 
     "trim": trim
 }
+
+if st.button("Generate Release"):
+
+    file = generate_release(report_data)
+
+    with open(file, "rb") as f:
+        st.download_button(
+            "Download Release",
+            f,
+            file_name=file
+        )

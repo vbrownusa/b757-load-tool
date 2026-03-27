@@ -104,7 +104,7 @@ add(f"{data['bag2_ct']} bags  Bin 2: {data['bag2']:.1f}")
 add(f"{data['bag3_ct']} bags  Bin 3: {data['bag3']:.1f}")
 add(f"{data['bag4_ct']} bags  Bin 4: {data['bag4']:.1f}")
 
-    # --- CARGO ---
+# --- CARGO ---
     add("REVENUE CARGO", True)
     add(f"{data['cargo1']} lbs  Bin 1: {data['cargo_vals'][0]:.1f}")
     add(f"{data['cargo2']} lbs  Bin 2: {data['cargo_vals'][1]:.1f}")

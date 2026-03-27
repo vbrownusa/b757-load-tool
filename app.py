@@ -32,21 +32,21 @@ ZONE_C = { ... }
 # FUNCTIONS
 # -------------------------
 
-pax_df = load_pax_data()
-
-
 def pax_awu(df, zone, pax, season):
     if pax == 0:
-        return 0
+        return 0.0
 
-    row = df[(df["zone"] == zone) & (df["pax"] == int(pax))]
+    zone = str(zone).strip().upper()
+    pax = int(pax)
+
+    row = df[(df["zone"] == zone) & (df["pax"] == pax)]
 
     if row.empty:
         st.error(f"Missing AWU data for Zone {zone}, Pax {pax}")
-        return 0
+        return 0.0
 
     return float(row.iloc[0][season])
-
+    
 def generate_release(data):
     ...
     

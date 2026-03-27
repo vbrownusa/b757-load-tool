@@ -2,7 +2,7 @@ import streamlit as st
 import math
 
 st.set_page_config(layout="wide")
-
+season = st.radio("Season", ["summer", "winter"], horizontal=True)
 BOW = 129621.4
 
 def round100(x): return int(round(x/100))*100

@@ -2,22 +2,15 @@ import streamlit as st
 import pandas as pd
 from docx import Document
 
-@st.cache_data
-def load_pax_data():
-    return pd.read_csv("pax_data.csv")
-    
+# -------------------------
+# LOAD PASSENGER DATA
+# -------------------------
 
-import pandas as pd
 @st.cache_data
 def load_pax_data():
     return pd.read_csv("pax_data.csv")
 
 pax_df = load_pax_data()
-import streamlit as st
-from docx import Document
-
-import streamlit as st
-from docx import Document
 
 # -------------------------
 # ✅ ADD TABLES HERE (TOP LEVEL)

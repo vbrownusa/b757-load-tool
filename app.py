@@ -348,15 +348,29 @@ report_data = {
     "tow_aft": tow_aft,
 
     "trim": trim
-}
 
-if st.button("Generate Release"):
+def generate_release(data):
 
-    file = generate_release(report_data)
+    doc = Document()
 
-    with open(file, "rb") as f:
-        st.download_button(
-            "Download Release",
-            f,
-            file_name=file
-        )
+    def add(text, bold=False):
+        p = doc.add_paragraph()
+        run = p.add_run(text)
+        run.bold = bold
+
+    add("B757 Weight and Balance Key", True)
+
+    add("PASSENGERS", True)
+    add(f"A: {data['zoneA']}")
+    add(f"B: {data['zoneB']}")
+    add(f"C: {data['zoneC']}")
+
+    add("BAGGAGE (DOMESTIC)", True)
+    add(f"Bin1: {data['bag1']}")
+    add(f"Bin2: {data['bag2']}")
+    add(f"Bin3: {data['bag3']}")
+    add(f"Bin4: {data['bag4']}")
+
+    doc.save("release.docx")
+
+    return "release.docx"

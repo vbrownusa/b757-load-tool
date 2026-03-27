@@ -115,10 +115,10 @@ with col2:
     b4 = st.number_input("Bin 4 Bags", 0)
 
 with col3:
-c1 = st.number_input("Cargo Bin 1", min_value=0, value=0)
-c2 = st.number_input("Cargo Bin 2", min_value=0, value=0)
-c3 = st.number_input("Cargo Bin 3", min_value=0, value=0)
-c4 = st.number_input("Cargo Bin 4", min_value=0, value=0)
+    c1 = st.number_input("Cargo Bin 1", min_value=0, value=0)
+    c2 = st.number_input("Cargo Bin 2", min_value=0, value=0)
+    c3 = st.number_input("Cargo Bin 3", min_value=0, value=0)
+    c4 = st.number_input("Cargo Bin 4", min_value=0, value=0)
 
 rf = st.number_input("Ramp Fuel", 0)
 tf = st.number_input("Taxi Fuel", 0)

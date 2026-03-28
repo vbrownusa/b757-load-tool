@@ -158,20 +158,32 @@ def cargo_awu(weight):
     return awu_values[-1]
 
 c1 = st.number_input("Cargo Bin 1 (lbs)", 0)
-c1_awu = cargo_awu(c1)
+c1_awu = cargo_awu_by_rule(CARGO_BIN1, c1)
 st.caption(f"AWU: {c1_awu:.1f}")
 
 c2 = st.number_input("Cargo Bin 2 (lbs)", 0)
-c2_awu = cargo_awu(c2)
+c2_awu = cargo_awu_by_rule(CARGO_BIN2, c2)
 st.caption(f"AWU: {c2_awu:.1f}")
 
 c3 = st.number_input("Cargo Bin 3 (lbs)", 0)
-c3_awu = cargo_awu(c3)
+c3_awu = cargo_awu_by_rule(CARGO_BIN3, c3)
 st.caption(f"AWU: {c3_awu:.1f}")
 
 c4 = st.number_input("Cargo Bin 4 (lbs)", 0)
-c4_awu = cargo_awu(c4)
+c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
 st.caption(f"AWU: {c4_awu:.1f}")
+
+
+
+
+
+
+
+
+
+
+
+
 
 # -------------------------
 # TOTAL

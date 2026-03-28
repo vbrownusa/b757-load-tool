@@ -191,6 +191,8 @@ with cols[3]:
 
 st.subheader("Cargo")
 
+st.subheader("Cargo")
+
 cols = st.columns(4)
 
 # --- BIN 1 ---
@@ -220,9 +222,6 @@ with cols[3]:
     c4 = st.number_input("", min_value=0, value=0, key="cargo4")
     c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
     st.caption(f"AWU: {c4_awu:.1f}")
-                         
-
-
 
 
 

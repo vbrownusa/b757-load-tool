@@ -104,19 +104,22 @@ cols = st.columns(4)
 
 with cols[0]:
     b1 = st.number_input("Bin 1", 0)
-    b1_awu = bag_awu(...)
+    b1_awu = bag_awu(b1)
     st.caption(f"{b1_awu:.1f}")
 
 with cols[1]:
     b2 = st.number_input("Bin 2", 0)
+    b2_awu = bag_awu(b2)
     st.caption(f"{b2_awu:.1f}")
 
 with cols[2]:
     b3 = st.number_input("Bin 3", 0)
+    b3_awu = bag_awu(b3)
     st.caption(f"{b3_awu:.1f}")
 
 with cols[3]:
     b4 = st.number_input("Bin 4", 0)
+    b4_awu = bag_awu(b4)
     st.caption(f"{b4_awu:.1f}")
 
 

@@ -191,7 +191,6 @@ with cols[3]:
 
 st.subheader("Cargo")
 
-st.subheader("Cargo")
 
 cols = st.columns(4)
 

@@ -111,7 +111,7 @@ with cols[0]:
 
 with cols[1]:
     c2 = st.number_input("Bin 2", min_value=0, value=0)
-    c2_awu = cargo_awu_by_rule(CARGO_BIN2, c2
+    c2_awu = cargo_awu_by_rule(CARGO_BIN2, c2)
     st.caption(f"AWU: {c2_awu:.1f}")
 
 with cols[2]:

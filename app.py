@@ -100,7 +100,7 @@ with col3:
 
 st.subheader("Baggage")
 
-st.subheader("Cargo")
+
 
 cols = st.columns(4)
 

@@ -34,7 +34,8 @@ def pax_awu(zone, pax, season):
 # UI
 # -------------------------
 
-st.title("Weight and Balance (B757-200 Adj BOW 129614.1)")
+st.title("Weight and Balance")
+st.subheader("B757-200 Adj BOW 129614.1")
 
 season = st.radio("Season", ["summer", "winter"])
 

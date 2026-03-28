@@ -95,7 +95,7 @@ with col3:
 # BAGGAGE (simple for now)
 # -------------------------
 
-st.subheader("Baggage")
+
 
 
 st.subheader("Baggage")
@@ -104,6 +104,7 @@ cols = st.columns(4)
 
 with cols[0]:
     b1 = st.number_input("Bin 1", 0)
+    b1_awu = bag_awu(...)
     st.caption(f"{b1_awu:.1f}")
 
 with cols[1]:

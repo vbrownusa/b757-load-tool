@@ -5,15 +5,18 @@ from docx import Document
 # -------------------------
 # LOAD PASSENGER DATA
 # -------------------------
+
 @st.cache_data
 def load_pax_data():
     df = pd.read_csv("pax_data.csv")
 
-    # Clean column names
     df.columns = df.columns.str.strip().str.lower()
-
-    # Drop bad rows
     df = df.dropna()
+
+    df["zone"] = df["zone"].astype(str).str.strip().str.upper()
+    df["pax"] = df["pax"].astype(int)
+
+    return df
 
     # Clean values
     df["zone"] = df["zone"].astype(str).str.strip().str.upper()

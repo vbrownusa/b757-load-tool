@@ -6,6 +6,10 @@ from docx import Document
 # LOAD PASSENGER DATA
 # -------------------------
 
+import streamlit as st
+import pandas as pd
+from docx import Document
+
 @st.cache_data
 def load_pax_data():
     df = pd.read_csv("pax_data.csv")
@@ -18,11 +22,10 @@ def load_pax_data():
 
     return df
 
-    # Clean values
-    df["zone"] = df["zone"].astype(str).str.strip().str.upper()
-    df["pax"] = df["pax"].astype(int)
+# 👉 THIS LINE IS CRITICAL
+pax_df = load_pax_data()
 
-    return df
+
 # -------------------------
 # ✅ ADD TABLES HERE (TOP LEVEL)
 # -------------------------

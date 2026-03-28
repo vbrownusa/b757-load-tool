@@ -217,7 +217,9 @@ with cols[2]:
 # --- BIN 4 ---
 with cols[3]:
     st.markdown("**Bin 4**")
-    c4 = st.number_input("", min
+    c4 = st.number_input("", min_value=0, value=0, key="cargo4")
+    c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
+    st.caption(f"AWU: {c4_awu:.1f}")
                          
 
 

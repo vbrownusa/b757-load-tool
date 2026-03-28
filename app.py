@@ -2,6 +2,32 @@ import streamlit as st
 import pandas as pd
 from docx import Document
 
+# -------------------------
+# BAG AWU LOOKUP (RANGE BASED)
+# -------------------------
+
+BAG_TABLE = [
+    (0, 10, 0.0),
+    (11, 20, 640.0),
+    (21, 30, 960.0),
+    (31, 40, 1280.0),
+    (41, 50, 1600.0),
+    (51, 60, 1920.0),
+    (61, 70, 2240.0),
+    (71, 80, 2560.0),
+]
+
+def bag_awu(count):
+    count = int(count)
+
+    for low, high, awu in BAG_TABLE:
+        if low <= count <= high:
+            return awu
+
+    st.error(f"Bag count out of range: {count}")
+    return 0.0
+
+
 
 # -------------------------
 # LOAD PASSENGER DATA

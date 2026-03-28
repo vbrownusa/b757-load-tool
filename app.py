@@ -199,37 +199,31 @@ st.write("DEBUG: cargo section")
 
 st.subheader("Cargo")
 
-
 cols = st.columns(4)
 
-# --- BIN 1 ---
 with cols[0]:
     st.markdown("**Bin 1**")
     c1 = st.number_input("", min_value=0, value=0, key="cargo1")
     c1_awu = cargo_awu_by_rule(CARGO_BIN1, c1)
-    st.caption(f"AWU: {c1_awu:.1f}")
+    st.caption(f"{c1_awu:.1f}")
 
-# --- BIN 2 ---
 with cols[1]:
     st.markdown("**Bin 2**")
     c2 = st.number_input("", min_value=0, value=0, key="cargo2")
     c2_awu = cargo_awu_by_rule(CARGO_BIN2, c2)
-    st.caption(f"AWU: {c2_awu:.1f}")
+    st.caption(f"{c2_awu:.1f}")
 
-# --- BIN 3 ---
 with cols[2]:
     st.markdown("**Bin 3**")
     c3 = st.number_input("", min_value=0, value=0, key="cargo3")
     c3_awu = cargo_awu_by_rule(CARGO_BIN3, c3)
-    st.caption(f"AWU: {c3_awu:.1f}")
+    st.caption(f"{c3_awu:.1f}")
 
-# --- BIN 4 ---
 with cols[3]:
     st.markdown("**Bin 4**")
     c4 = st.number_input("", min_value=0, value=0, key="cargo4")
     c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
-    st.caption(f"AWU: {c4_awu:.1f}")
-
+    st.caption(f"{c4_awu:.1f}")
 
 
 

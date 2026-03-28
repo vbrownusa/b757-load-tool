@@ -30,6 +30,35 @@ def pax_awu(zone, pax, season):
 
     return float(row.iloc[0][season])
 
+
+# -------------------------
+# BAG AWU TABLE (RANGE BASED)
+# -------------------------
+
+BAG_TABLE = [
+    (0, 0, 0.0),
+    (1, 10, 320.0),
+    (11, 20, 640.0),
+    (21, 30, 960.0),
+    (31, 40, 1280.0),
+    (41, 50, 1600.0),
+    (51, 60, 1920.0),
+    (61, 70, 2240.0),
+    (71, 80, 2560.0),
+]
+
+def bag_awu(count):
+    count = int(count)
+
+    for low, high, awu in BAG_TABLE:
+        if low <= count <= high:
+            return awu
+
+    return BAG_TABLE[-1][2]
+
+
+
+
 # -------------------------
 # UI
 # -------------------------
@@ -63,8 +92,7 @@ st.caption(f"AWU: {zc:.1f}")
 
 st.subheader("Baggage")
 
-def bag_awu(count):
-    return count * 32.0
+
 
 b1 = st.number_input("Bin 1 Bags", 0)
 b1_awu = bag_awu(b1)

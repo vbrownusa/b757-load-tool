@@ -74,17 +74,22 @@ season = st.radio("Season", ["summer", "winter"])
 
 st.subheader("Passengers")
 
-a = int(st.number_input("Zone A Pax", 0, 54))
-za = pax_awu("A", a, season)
-st.caption(f"AWU: {za:.1f}")
+col1, col2, col3 = st.columns(3)
 
-b = int(st.number_input("Zone B Pax", 0, 80))
-zb = pax_awu("B", b, season)
-st.caption(f"AWU: {zb:.1f}")
+with col1:
+    a = int(st.number_input("Zone A Pax", 0, 54))
+    za = pax_awu("A", a, season)
+    st.caption(f"AWU: {za:.1f}")
 
-c = int(st.number_input("Zone C Pax", 0, 84))
-zc = pax_awu("C", c, season)
-st.caption(f"AWU: {zc:.1f}")
+with col2:
+    b = int(st.number_input("Zone B Pax", 0, 80))
+    zb = pax_awu("B", b, season)
+    st.caption(f"AWU: {zb:.1f}")
+
+with col3:
+    c = int(st.number_input("Zone C Pax", 0, 84))
+    zc = pax_awu("C", c, season)
+    st.caption(f"AWU: {zc:.1f}")
 
 # -------------------------
 # BAGGAGE (simple for now)

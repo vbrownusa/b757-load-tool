@@ -102,19 +102,19 @@ st.subheader("Baggage")
 
 cols = st.columns(4)
 
-with cols[0]:
+with cols[1]:
     b1 = st.number_input("Bin 1", 0)
     st.caption(f"{b1_awu:.1f}")
 
-with cols[1]:
+with cols[2]:
     b2 = st.number_input("Bin 2", 0)
     st.caption(f"{b2_awu:.1f}")
 
-with cols[2]:
+with cols[3]:
     b3 = st.number_input("Bin 3", 0)
     st.caption(f"{b3_awu:.1f}")
 
-with cols[3]:
+with cols[4]:
     b4 = st.number_input("Bin 4", 0)
     st.caption(f"{b4_awu:.1f}")
 

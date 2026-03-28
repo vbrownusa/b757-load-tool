@@ -94,20 +94,17 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     a = int(st.number_input("Zone A", 0, 54))
+    za = pax_awu(pax_df, "A", a, season)
+    st.caption(f"AWU: {za:.1f}")
+
     b = int(st.number_input("Zone B", 0, 80))
+    zb = pax_awu(pax_df, "B", b, season)
+    st.caption(f"AWU: {zb:.1f}")
+
     c = int(st.number_input("Zone C", 0, 84))
+    zc = pax_awu(pax_df, "C", c, season)
+    st.caption(f"AWU: {zc:.1f}")
 
-with col2:
-    b1 = st.number_input("Bin 1 Bags", 0)
-    b2 = st.number_input("Bin 2 Bags", 0)
-    b3 = st.number_input("Bin 3 Bags", 0)
-    b4 = st.number_input("Bin 4 Bags", 0)
-
-with col3:
-    c1 = st.number_input("Cargo Bin 1", 0)
-    c2 = st.number_input("Cargo Bin 2", 0)
-    c3 = st.number_input("Cargo Bin 3", 0)
-    c4 = st.number_input("Cargo Bin 4", 0)
 
 rf = st.number_input("Ramp Fuel", 0)
 tf = st.number_input("Taxi Fuel", 0)

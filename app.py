@@ -116,7 +116,7 @@ with col1:
     c = int(st.number_input("Zone C", min_value=0, max_value=84, step=1))
 
 with col2:
-    b1 = st.number_input("Bin 1 Bags", )
+    b1 = st.number_input("Bin 1 Bags", 0)
     b2 = st.number_input("Bin 2 Bags", 0)
     b3 = st.number_input("Bin 3 Bags", 0)
     b4 = st.number_input("Bin 4 Bags", 0)
@@ -130,6 +130,33 @@ with col3:
 rf = st.number_input("Ramp Fuel", 0)
 tf = st.number_input("Taxi Fuel", 0)
 
+
+# -------------------------
+# CALCULATIONS (PUT IT HERE)
+# -------------------------
+
+za = pax_awu(pax_df, "A", a, season)
+zb = pax_awu(pax_df, "B", b, season)
+zc = pax_awu(pax_df, "C", c, season)
+
+bag_awus = [
+    bag_awu(b1),
+    bag_awu(b2),
+    bag_awu(b3),
+    bag_awu(b4),
+]
+
+cargo_awus = [
+    cargo_awu_by_rule(CARGO_BIN1, c1),
+    cargo_awu_by_rule(CARGO_BIN2, c2),
+    cargo_awu_by_rule(CARGO_BIN3, c3),
+    cargo_awu_by_rule(CARGO_BIN4, c4),
+]
+
+tof = rf - tf
+fuel_awu_val = fuel_awu(tof)
+
+zfw = BOW + za + zb + zc + sum(bag_awus) + sum(cargo_awus)
 
 BOW = 129621.4
 

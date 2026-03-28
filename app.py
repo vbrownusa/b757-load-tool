@@ -10,7 +10,7 @@ import pandas as pd
 @st.cache_data
 def load_pax_data():
     df = pd.read_csv("pax_data.csv")
-    df = pd.read_csv("fuel_data.csv")
+    
 
     df.columns = df.columns.str.strip().str.lower()
     df = df.dropna()

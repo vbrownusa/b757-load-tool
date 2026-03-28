@@ -57,6 +57,26 @@ def bag_awu(count):
     return BAG_TABLE[-1][2]
 
 
+# -------------------------
+# CARGO AWU FUNCTION
+# -------------------------
+
+def cargo_awu_by_rule(table, weight):
+    if weight <= 0:
+        return 0.0
+
+    awu_values = sorted(table.values())
+
+    for awu in awu_values:
+        # ignore last digits → convert to hundreds
+        equiv = int(awu) - (int(awu) % 100)
+
+        if equiv >= weight:
+            return awu
+
+    return awu_values[-1]
+
+
 
 
 # -------------------------

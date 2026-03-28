@@ -189,6 +189,27 @@ with cols[3]:
 # CARGO (your rule)
 # -------------------------
 
+
+st.write("DEBUG: cargo section")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 st.subheader("Cargo")
 
 

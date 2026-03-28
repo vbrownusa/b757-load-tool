@@ -2,9 +2,11 @@ import streamlit as st
 import pandas as pd
 from docx import Document
 
+
 # -------------------------
 # LOAD PASSENGER DATA
 # -------------------------
+
 
 import streamlit as st
 import pandas as pd
@@ -114,7 +116,7 @@ with col1:
     c = int(st.number_input("Zone C", min_value=0, max_value=84, step=1))
 
 with col2:
-    b1 = st.number_input("Bin 1 Bags", 0)
+    b1 = st.number_input("Bin 1 Bags", )
     b2 = st.number_input("Bin 2 Bags", 0)
     b3 = st.number_input("Bin 3 Bags", 0)
     b4 = st.number_input("Bin 4 Bags", 0)

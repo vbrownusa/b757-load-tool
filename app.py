@@ -197,19 +197,6 @@ st.write("DEBUG: cargo section")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 st.subheader("Cargo")
 
 

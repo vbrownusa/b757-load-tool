@@ -10,6 +10,7 @@ import pandas as pd
 @st.cache_data
 def load_pax_data():
     df = pd.read_csv("pax_data.csv")
+    df = pd.read_csv("fuel_data.csv")
 
     df.columns = df.columns.str.strip().str.lower()
     df = df.dropna()
@@ -85,7 +86,7 @@ def cargo_awu_by_rule(table, weight):
 # -------------------------
 
 
-st.title("B757 Dispatch Tool")
+st.title("B757 Weightband Balance Tool")
 
 season = st.radio("Season", ["summer", "winter"], horizontal=True)
 

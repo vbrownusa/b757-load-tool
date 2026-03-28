@@ -188,7 +188,7 @@ with cols[3]:
 # -------------------------
 # CARGO (your rule)
 # -------------------------
-
+st.write("FULL WIDTH TEST")
 
 st.write("DEBUG: cargo section")
 

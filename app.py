@@ -183,12 +183,32 @@ with cols[3]:
     c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
     st.caption(f"AWU: {c4_awu:.1f}")
 
+st.write("FULL WIDTH TEST")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # -------------------------
 # CARGO (your rule)
 # -------------------------
-st.write("FULL WIDTH TEST")
+
 
 st.write("DEBUG: cargo section")
 

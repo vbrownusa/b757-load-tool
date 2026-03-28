@@ -74,7 +74,7 @@ season = st.radio("Season", ["summer", "winter"])
 
 st.subheader("Passengers")
 
-cols = st.columns(6)
+cols = st.columns(3)
 
 with cols[0]:
     a = int(st.number_input("A", 0, 54))

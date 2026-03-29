@@ -231,7 +231,6 @@ with col_left:
 
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
-
     tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
 
     st.markdown(

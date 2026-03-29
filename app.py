@@ -253,17 +253,14 @@ with col_left:
     # --- Summary (wider + cleaner) ---
     st.markdown("**Summary**")
 
-    st.markdown(
-        f"""
-        <div style="font-family:monospace; font-size:16px; line-height:1.15">
-        {'ZFW:':<14}{zfw:>12,.1f}<br>
-        {'Fuel AWU:':<14}{takeoff_fuel_awu:>12,.1f}<br>
-        {'TOW:':<14}{tow:>12,.1f}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+st.markdown(
+    f"""
+    <div style="font-family:monospace; font-size:16px; line-height:1.1">
+    {'Takeoff Fuel:':<14}{tof:>12,.1f}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # -------------------------
 # RIGHT: CG LIMITS (TIGHT + COLORED STATUS)
 # -------------------------

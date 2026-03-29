@@ -292,7 +292,7 @@ with col_right:
     )
 
 # -------------------------
-# RIGHT: STAB TRIM (ALIGNED STYLE)
+# RIGHT: STAB TRIM (UPDATED)
 # -------------------------
 with col_trim:
     st.markdown("### Stab Trim")
@@ -304,7 +304,6 @@ with col_trim:
         f"""
         <div style="font-family:monospace; line-height:1.0">
 
-        {'ZFW Trim:':<{label_width}}{'--':>{num_width}}<br>
         {'TOW Trim:':<{label_width}}{'--':>{num_width}}
 
         </div>

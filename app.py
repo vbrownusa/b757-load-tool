@@ -221,12 +221,12 @@ zfw = (
 st.subheader("ZFW / Fuel")
 
 # Narrow input columns (like cargo bins)
-col1, col2 = st.columns(4)
+cols = st.columns(4)
 
-with col1:
+with cols[0]:
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
 
-with col2:
+with cols[1]:
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
 
 # Calculations

@@ -208,18 +208,27 @@ with cargo_cols[3]:
     st.caption(f"{c4_awu:.1f}")
 
 
+# -------------------------
+# CALCULATIONS
+# -------------------------
 
-CARGO_BIN1 = {
-    200:299.6,
-    300:499.4,
-    400:699.1,
-    500:898.9,
-    600:1098.7,
-    700:1298.2,
-    800:1498.0,
-    900:1697.8,
-    1000:1897.5,
-}
+# Passengers
+za = pax_awu("A", int(a), season) if a is not None else 0.0
+zb = pax_awu("B", int(b), season) if b is not None else 0.0
+zc = pax_awu("C", int(c), season) if c is not None else 0.0
+
+# Baggage
+b1_awu = bag_awu(int(b1)) if b1 is not None else 0.0
+b2_awu = bag_awu(int(b2)) if b2 is not None else 0.0
+b3_awu = bag_awu(int(b3)) if b3 is not None else 0.0
+b4_awu = bag_awu(int(b4)) if b4 is not None else 0.0
+
+# Cargo
+c1_awu = cargo_awu_by_rule(CARGO_BIN1, int(c1)) if c1 is not None else 0.0
+c2_awu = cargo_awu_by_rule(CARGO_BIN2, int(c2)) if c2 is not None else 0.0
+c3_awu = cargo_awu_by_rule(CARGO_BIN3, int(c3)) if c3 is not None else 0.0
+c4_awu = cargo_awu_by_rule(CARGO_BIN4, int(c4)) if c4 is not None else 0.0
+
 
 def cargo_awu(weight):
     if weight <= 0:

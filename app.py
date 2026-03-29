@@ -213,14 +213,13 @@ zfw = (
     + b1_awu + b2_awu + b3_awu + b4_awu
     + c1_awu + c2_awu + c3_awu + c4_awu
 )
-
 # -------------------------
 # ZFW / FUEL + CG LIMITS
 # -------------------------
 
 st.subheader("Fuel")
 
-# --- Fuel inputs (match bin width) ---
+# --- Fuel row (aligned like bins) ---
 fuel_cols = st.columns(4)
 
 with fuel_cols[0]:
@@ -229,12 +228,17 @@ with fuel_cols[0]:
 with fuel_cols[1]:
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=0, key="taxi")
 
+with fuel_cols[2]:
+    st.markdown("**Takeoff Fuel**")
+
 # --- Calculations (global) ---
 tof = ramp_fuel - taxi_fuel
 takeoff_fuel_awu = fuel_awu_lookup(tof)
 tow = zfw + takeoff_fuel_awu
 
-st.write(f"Takeoff Fuel: {tof:,.1f}")
+# --- Takeoff Fuel value under label ---
+with fuel_cols[2]:
+    st.text(f"{tof:,.1f}")
 
 st.markdown("---")
 

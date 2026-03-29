@@ -267,12 +267,17 @@ with col_right:
     st.subheader("CG LIMITS")
 
     label_width = 24
+    num_width = 8
+
+    # --- CALCULATIONS ---
+    planned_zfw_cg = zfw % 100
+    planned_tow_cg = tow % 100
 
     # --- ZFW LIMITS ---
     st.markdown("**ZFW Limits**")
     st.text(f"{'ZFW Forward Limit:':<{label_width}}")
     st.text(f"{'ZFW Aft Limit:':<{label_width}}")
-    st.text(f"{'Planned ZFW CG:':<{label_width}}")
+    st.text(f"{'Planned ZFW CG:':<{label_width}}{planned_zfw_cg:>{num_width}.1f}")
 
     st.divider()
 
@@ -280,4 +285,4 @@ with col_right:
     st.markdown("**TOW Limits**")
     st.text(f"{'TOW Forward Limit:':<{label_width}}")
     st.text(f"{'TOW Aft Limit:':<{label_width}}")
-    st.text(f"{'Planned TOW CG:':<{label_width}}")
+    st.text(f"{'Planned TOW CG:':<{label_width}}{planned_tow_cg:>{num_width}.1f}")

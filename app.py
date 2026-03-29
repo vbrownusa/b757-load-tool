@@ -136,18 +136,18 @@ st.subheader("Passengers")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    a = int(st.number_input("Zone A Pax",0,54))
-    za = pax_awu("A", a, season)
+    a = st.number_input("Zone A Pax", min_value=0, max_value=54, value=None, key="zoneA")
+    za = pax_awu("A", int(a), season) if a is not None else 0.0
     st.caption(f"AWU: {za:.1f}")
 
 with col2:
-    b = int(st.number_input("Zone B Pax", 0, 80))
-    zb = pax_awu("B", b, season)
+    b = st.number_input("Zone B Pax", min_value=0, max_value=80, value=None, key="zoneB")
+    zb = pax_awu("B", int(b), season) if b is not None else 0.0
     st.caption(f"AWU: {zb:.1f}")
 
 with col3:
-    c = int(st.number_input("Zone C Pax", 0, 84))
-    zc = pax_awu("C", c, season)
+    c = st.number_input("Zone C Pax", min_value=0, max_value=84, value=None, key="zoneC")
+    zc = pax_awu("C", int(c), season) if c is not None else 0.0
     st.caption(f"AWU: {zc:.1f}")
 
 # -------------------------

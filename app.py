@@ -274,7 +274,7 @@ with col_right:
         <div style="font-family:monospace; line-height:1.1">
 
         {'ZFW:':<{label_width}}{zfw:>{num_width},.1f}<br>
-        {'Fuel AWU:':<{label_width}}{fuel_awu:>{num_width},.1f}<br>
+        {'Fuel:':<{label_width}}{fuel_awu:>{num_width},.1f}<br>
         {'TOW:':<{label_width}}{tow:>{num_width},.1f}
 
         </div>

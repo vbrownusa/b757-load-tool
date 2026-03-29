@@ -220,57 +220,49 @@ zfw = (
 
 col_left, col_right = st.columns(2)
 
-# -------------------------
-# LEFT: ZFW / FUEL
-# -------------------------
 with col_left:
 
     st.subheader("Adjusted Weight Totals")
 
     cols = st.columns(4)
 
-with cols[0]:
-    ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
-    taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
-    tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
+    with cols[0]:
+        ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
+        taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
 
-    st.markdown(
-        f"""
-        <div style="font-family:monospace; line-height:1.1">
-        Takeoff Fuel: {tof:,.1f}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
     # --- Calculations ---
     tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
     takeoff_fuel_awu = fuel_awu_lookup(tof)
 
-    zfw = (
-        BOW
-        + za + zb + zc
-        + b1_awu + b2_awu + b3_awu + b4_awu
-        + c1_awu + c2_awu + c3_awu + c4_awu
-    )
-
     tow = zfw + takeoff_fuel_awu
 
-    st.write(f"Takeoff Fuel: {tof:.1f}")
+    # --- Wide, aligned fuel block ---
+    st.markdown(
+        f"""
+        <div style="font-family:monospace; font-size:16px; line-height:1.15">
+        {'Ramp Fuel:':<14}{(ramp_fuel or 0):>12,.1f}<br>
+        {'Taxi Fuel:':<14}{(taxi_fuel or 0):>12,.1f}<br>
+        {'Takeoff Fuel:':<14}{tof:>12,.1f}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-    # --- Summary ---
+    st.markdown("---")
+
+    # --- Summary (wider + cleaner) ---
     st.markdown("**Summary**")
 
     st.markdown(
-    f"""
-    <div style="font-family:monospace; line-height:1.1">
-    {'ZFW:':<10}{zfw:>12,.1f}<br>
-    {'Fuel AWU:':<10}{takeoff_fuel_awu:>12,.1f}<br>
-    {'TOW:':<10}{tow:>12,.1f}
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
+        f"""
+        <div style="font-family:monospace; font-size:16px; line-height:1.15">
+        {'ZFW:':<14}{zfw:>12,.1f}<br>
+        {'Fuel AWU:':<14}{takeoff_fuel_awu:>12,.1f}<br>
+        {'TOW:':<14}{tow:>12,.1f}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # -------------------------
 # RIGHT: CG LIMITS (TIGHT + COLORED STATUS)

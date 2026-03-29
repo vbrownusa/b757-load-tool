@@ -233,33 +233,14 @@ with col_left:
     takeoff_fuel_awu = fuel_awu_lookup(tof)
     tow = zfw + takeoff_fuel_awu
 
-    # --- Fuel Display ---
-    st.markdown(
-        f"""
-        <div style="font-family:monospace; font-size:16px; line-height:1.15">
-        {'Ramp Fuel:':<14}{(ramp_fuel or 0):>12,.1f}<br>
-        {'Taxi Fuel:':<14}{(taxi_fuel or 0):>12,.1f}<br>
-        {'Takeoff Fuel:':<14}{tof:>12,.1f}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown("---")
+    st.write(f"Takeoff Fuel: {tof:.1f}")
 
     # --- Summary ---
-    st.markdown("**Summary**")
+    st.subheader("Summary")
 
-    st.markdown(
-        f"""
-        <div style="font-family:monospace; font-size:16px; line-height:1.15">
-        {'ZFW:':<14}{zfw:>12,.1f}<br>
-        {'Fuel AWU:':<14}{takeoff_fuel_awu:>12,.1f}<br>
-        {'TOW:':<14}{tow:>12,.1f}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.write(f"ZFW: {zfw:,.1f}")
+    st.write(f"Fuel AWU: {takeoff_fuel_awu:,.1f}")
+    st.write(f"TOW: {tow:,.1f}")
 # -------------------------
 # RIGHT: CG LIMITS (TIGHT + COLORED STATUS)
 # -------------------------

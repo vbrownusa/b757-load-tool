@@ -181,13 +181,12 @@ zfw = (
 # ZFW + FUEL
 # -------------------------
 
-st.subheader("TOTALS")
+st.subheader("ZFW / Fuel")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("**ZFW**")
-    st.write(f"{zfw:.1f}")
+    st.write(f"ZFW: {zfw:.1f}")
 
 with col2:
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")

@@ -2,6 +2,23 @@ import streamlit as st
 import pandas as pd
 st.set_page_config(layout="wide")
 
+CARGO_BIN1 = {
+    200: 299.6,
+    300: 499.4,
+    400: 699.1,
+    500: 898.9,
+    600: 1098.7,
+    700: 1298.2,
+    800: 1498.0,
+    900: 1697.8,
+    1000: 1897.5,
+}
+
+CARGO_BIN2 = CARGO_BIN1
+CARGO_BIN3 = CARGO_BIN1
+CARGO_BIN4 = CARGO_BIN1
+
+
 # -------------------------
 # CARGO AWU FUNCTION
 # -------------------------

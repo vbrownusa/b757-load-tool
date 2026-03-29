@@ -212,7 +212,9 @@ zfw = (
     + za + zb + zc
     + b1_awu + b2_awu + b3_awu + b4_awu
     + c1_awu + c2_awu + c3_awu + c4_awu
-)# -------------------------
+)
+
+# -------------------------
 # ZFW / FUEL + CG LIMITS
 # -------------------------
 
@@ -228,7 +230,7 @@ with fuel_cols[1]:
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=0, key="taxi")
 
 with fuel_cols[2]:
-    st.markdown("**Takeoff Fuel**")
+    st.write("Takeoff Fuel")  # matches input label style
 
 # --- Calculations (global) ---
 tof = ramp_fuel - taxi_fuel
@@ -252,7 +254,7 @@ st.markdown("---")
 col_left, col_right = st.columns(2)
 
 # -------------------------
-# LEFT: CG LIMITS
+# LEFT: CG LIMITS (tight spacing)
 # -------------------------
 with col_left:
 
@@ -280,13 +282,21 @@ with col_left:
     zfw_status = cg_status(planned_zfw_cg, zfw_fwd_limit, zfw_aft_limit)
     tow_status = cg_status(planned_tow_cg, tow_fwd_limit, tow_aft_limit)
 
-    st.text(f"ZFW CG: {planned_zfw_cg:.1f}  [{zfw_status}]")
-    st.text(f"Limits: {zfw_fwd_limit:.1f} - {zfw_aft_limit:.1f}")
+    # --- Compact CG display ---
+    st.markdown(
+        f"""
+        <div style="font-family:monospace; line-height:1.1">
 
-    st.text("")
+        ZFW CG: {planned_zfw_cg:.1f}  [{zfw_status}]<br>
+        Limits: {zfw_fwd_limit:.1f} - {zfw_aft_limit:.1f}<br><br>
 
-    st.text(f"TOW CG: {planned_tow_cg:.1f}  [{tow_status}]")
-    st.text(f"Limits: {tow_fwd_limit:.1f} - {tow_aft_limit:.1f}")
+        TOW CG: {planned_tow_cg:.1f}  [{tow_status}]<br>
+        Limits: {tow_fwd_limit:.1f} - {tow_aft_limit:.1f}
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 
 # -------------------------

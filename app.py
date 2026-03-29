@@ -181,20 +181,20 @@ zfw = (
 # ZFW + FUEL
 # -------------------------
 
-st.subheader("ZFW / Fuel")
+st.subheader("TOTALS")
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
+# --- ZFW (left) ---
 with col1:
     st.write(f"ZFW: {zfw:.1f}")
 
+# --- Fuel (right, stacked) ---
 with col2:
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
-
-with col3:
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
 
-# Takeoff Fuel
-tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
+    tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
 
+    st.write(f"Takeoff Fuel: {tof:.1f}")
 st.write(f"Takeoff Fuel: {tof:.1f}")

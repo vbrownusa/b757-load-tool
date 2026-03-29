@@ -23,33 +23,28 @@ def load_pax_data():
 def load_fuel_data():
     df = pd.read_csv("fuel_data.csv")
 
-    # Case 1: correct format
-    if "weight" in df.columns and "awu" in df.columns:
-        df["weight"] = df["weight"].astype(int)
-        df["awu"] = df["awu"].astype(float)
-        return df
+    # Flatten entire dataframe (handles multi-column OCR mess)
+    df = df.stack().reset_index(drop=True)
 
-    # Case 2: two unnamed columns
-    if df.shape[1] == 2:
-        df.columns = ["weight", "awu"]
-        df["weight"] = df["weight"].astype(int)
-        df["awu"] = df["awu"].astype(float)
-        return df
-
-    # Case 3: single column (stacked OCR format)
-    df.columns = ["raw"]
-    df["raw"] = pd.to_numeric(df["raw"], errors="coerce")
+    # Convert to numeric, drop junk
+    df = pd.to_numeric(df, errors="coerce")
     df = df.dropna().reset_index(drop=True)
 
-    df = pd.DataFrame({
-        "weight": df["raw"].iloc[::2].values,
-        "awu": df["raw"].iloc[1::2].values
+    # Ensure even number of rows
+    if len(df) % 2 != 0:
+        df = df.iloc[:-1]
+
+    # Rebuild clean pairs
+    fuel_df = pd.DataFrame({
+        "weight": df.iloc[::2].values,
+        "awu": df.iloc[1::2].values
     })
 
-    df["weight"] = df["weight"].astype(int)
-    df["awu"] = df["awu"].astype(float)
+    # Final type enforcement
+    fuel_df["weight"] = fuel_df["weight"].astype(int)
+    fuel_df["awu"] = fuel_df["awu"].astype(float)
 
-    return df
+    return fuel_df
 
 
 pax_df = load_pax_data()

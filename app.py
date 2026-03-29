@@ -151,7 +151,7 @@ with col3:
     st.caption(f"AWU: {zc:.1f}")
 
 # -------------------------
-# BAGGAGE (simple for now)
+# BAGGAGE
 # -------------------------
 
 st.subheader("Baggage")
@@ -159,23 +159,23 @@ st.subheader("Baggage")
 cols = st.columns(4)
 
 with cols[0]:
-    b1 = st.number_input("Bin 1", 0, key="bag1")
-    b1_awu = bag_awu(b1)
+    b1 = st.number_input("Bin 1", min_value=0, value=None, key="bag1")
+    b1_awu = bag_awu(int(b1)) if b1 is not None else 0.0
     st.caption(f"{b1_awu:.1f}")
 
 with cols[1]:
-    b2 = st.number_input("Bin 2", 0, key="bag2")
-    b2_awu = bag_awu(b2)
+    b2 = st.number_input("Bin 2", min_value=0, value=None, key="bag2")
+    b2_awu = bag_awu(int(b2)) if b2 is not None else 0.0
     st.caption(f"{b2_awu:.1f}")
 
 with cols[2]:
-    b3 = st.number_input("Bin 3", 0, key="bag3")
-    b3_awu = bag_awu(b3)
+    b3 = st.number_input("Bin 3", min_value=0, value=None, key="bag3")
+    b3_awu = bag_awu(int(b3)) if b3 is not None else 0.0
     st.caption(f"{b3_awu:.1f}")
 
 with cols[3]:
-    b4 = st.number_input("Bin 4", 0, key="bag4")
-    b4_awu = bag_awu(b4)
+    b4 = st.number_input("Bin 4", min_value=0, value=None, key="bag4")
+    b4_awu = bag_awu(int(b4)) if b4 is not None else 0.0
     st.caption(f"{b4_awu:.1f}")
 
 

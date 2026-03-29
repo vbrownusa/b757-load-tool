@@ -230,10 +230,22 @@ if ramp is not None:
 else:
     tof = 0.0
 
-# --- Display (ONLY ONE) ---
+# --- Aligned Display (matches input height/spacing) ---
 with fuel_cols[2]:
-    st.markdown("**Takeoff Fuel**")
-    st.text(f"{tof:,.1f}")
+    st.write("Takeoff Fuel")
+    st.markdown(
+        f"""
+        <div style="
+            height:38px;
+            display:flex;
+            align-items:center;
+            font-size:16px;
+        ">
+            {tof:,.1f}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # -------------------------
 # DOWNSTREAM CALCULATIONS
@@ -241,7 +253,6 @@ with fuel_cols[2]:
 
 fuel_awu = fuel_awu_lookup(tof) if tof > 0 else 0.0
 tow = zfw + fuel_awu
-
 # -------------------------
 # CG
 # -------------------------

@@ -185,11 +185,18 @@ st.subheader("ZFW / Fuel")
 
 col1, col2 = st.columns(2)
 
-# --- ZFW ---
+# --- LEFT: ZFW + TOF AWU ---
 with col1:
     st.write(f"ZFW: {zfw:.1f}")
 
-# --- Fuel ---
+    takeoff_fuel_awu = st.number_input(
+        "Takeoff Fuel AWU",
+        min_value=0.0,
+        value=None,
+        key="tof_awu"
+    )
+
+# --- RIGHT: FUEL INPUTS ---
 with col2:
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")

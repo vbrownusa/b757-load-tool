@@ -249,12 +249,12 @@ st.markdown(
             <div style="display:flex; justify-content:space-between; margin-top:-6px;">
                 <span>ZFW:</span>
                 <span style="display:inline-block; width:100px; text-align:right;">
-                    {zfw:,.1f}
+                    <b>{zfw:,.1f}</b>
                 </span>
             </div>
 
         </div>
     </div>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True  
 )

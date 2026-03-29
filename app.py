@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+st.set_page_config(layout="wide")
 
 # -------------------------
 # CARGO AWU FUNCTION
@@ -154,12 +154,7 @@ with col3:
 # BAGGAGE (simple for now)
 # -------------------------
 
-
-
-
 st.subheader("Baggage")
-
-
 
 cols = st.columns(4)
 
@@ -183,39 +178,10 @@ with cols[3]:
     c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
     st.caption(f"AWU: {c4_awu:.1f}")
 
-st.write("FULL WIDTH TEST")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # -------------------------
 # CARGO (your rule)
 # -------------------------
-
-
-st.write("DEBUG: cargo section")
-
-
-
-
-
 
 st.subheader("Cargo")
 

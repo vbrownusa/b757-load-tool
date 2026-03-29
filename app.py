@@ -215,44 +215,57 @@ zfw = (
 )
 
 # -------------------------
-# ZFW / FUEL
+# ZFW / FUEL + CG LIMITS
 # -------------------------
 
-st.subheader("ZFW / Fuel")
+col_left, col_right = st.columns(2)
 
-# --- Narrow inputs (same width as bins) ---
-cols = st.columns(4)
+# -------------------------
+# LEFT: ZFW / FUEL
+# -------------------------
+with col_left:
 
-with cols[0]:
-    ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
-    taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
+    st.subheader("ZFW / Fuel")
 
-# --- Calculations ---
-tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
-takeoff_fuel_awu = fuel_awu_lookup(tof)
+    cols = st.columns(4)
 
-zfw = (
-    BOW
-    + za + zb + zc
-    + b1_awu + b2_awu + b3_awu + b4_awu
-    + c1_awu + c2_awu + c3_awu + c4_awu
-)
+    with cols[0]:
+        ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
+        taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
 
-# --- Output ---
-st.write(f"Takeoff Fuel: {tof:.1f}")
+    # --- Calculations ---
+    tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
+    takeoff_fuel_awu = fuel_awu_lookup(tof)
 
-# --- Left-side summary block ---
-# --- Left-side summary block ---
-# --- Left-side summary block ---
-# --- Left-side summary block ---
-# --- Left-side summary block ---
-st.markdown("**Summary**")
+    zfw = (
+        BOW
+        + za + zb + zc
+        + b1_awu + b2_awu + b3_awu + b4_awu
+        + c1_awu + c2_awu + c3_awu + c4_awu
+    )
 
-label_width = 12
-num_width = 14
+    tow = zfw + takeoff_fuel_awu
 
-tow = zfw + takeoff_fuel_awu
+    st.write(f"Takeoff Fuel: {tof:.1f}")
 
-st.text(f"{'ZFW:':<{label_width}}{zfw:>{num_width},.1f}")
-st.text(f"{'Fuel AWU:':<{label_width}}{takeoff_fuel_awu:>{num_width},.1f}")
-st.text(f"{'TOW:':<{label_width}}{tow:>{num_width},.1f}")
+    # --- Summary ---
+    st.markdown("**Summary**")
+
+    label_width = 12
+    num_width = 14
+
+    st.text(f"{'ZFW:':<{label_width}}{zfw:>{num_width},.1f}")
+    st.text(f"{'Fuel AWU:':<{label_width}}{takeoff_fuel_awu:>{num_width},.1f}")
+    st.text(f"{'TOW:':<{label_width}}{tow:>{num_width},.1f}")
+
+
+# -------------------------
+# RIGHT: CG LIMITS
+# -------------------------
+with col_right:
+
+    st.subheader("CG LIMITS")
+
+    # placeholder (we'll build this next)
+    st.write("Forward Limit:")
+    st.write("Aft Limit:")

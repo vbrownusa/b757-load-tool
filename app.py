@@ -237,25 +237,11 @@ with col_left:
     tow = zfw + takeoff_fuel_awu
 
     # --- Wide, aligned fuel block ---
-    st.markdown(
-        f"""
-        <div style="font-family:monospace; font-size:16px; line-height:1.15">
-        {'Ramp Fuel:':<14}{(ramp_fuel or 0):>12,.1f}<br>
-        {'Taxi Fuel:':<14}{(taxi_fuel or 0):>12,.1f}<br>
-        {'Takeoff Fuel:':<14}{tof:>12,.1f}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown("---")
-
-    # --- Summary (wider + cleaner) ---
-    st.markdown("**Summary**")
-
-st.markdown(
+ st.markdown(
     f"""
-    <div style="font-family:monospace; font-size:16px; line-height:1.1">
+    <div style="font-family:monospace; font-size:16px; line-height:1.15">
+    {'Ramp Fuel:':<14}{(ramp_fuel or 0):>12,.1f}<br>
+    {'Taxi Fuel:':<14}{(taxi_fuel or 0):>12,.1f}<br>
     {'Takeoff Fuel:':<14}{tof:>12,.1f}
     </div>
     """,

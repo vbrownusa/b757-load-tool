@@ -204,15 +204,24 @@ zfw = BOW + za + zb + zc + sum(bags) + sum(cargo_vals)
 
 st.subheader("Fuel")
 
-col1, col2 = st.columns(2)
+fuel_cols = st.columns(4)
 
-with col1:
-    ramp = st.number_input("Ramp Fuel", min_value=0, value=None, placeholder="Enter ramp fuel")
-    taxi = st.number_input("Taxi Fuel", min_value=0, value=None, placeholder="Enter taxi fuel")
+with fuel_cols[0]:
+    ramp = st.number_input("Ramp Fuel", min_value=0, value=None, placeholder="Enter")
 
+with fuel_cols[1]:
+    taxi = st.number_input("Taxi Fuel", min_value=0, value=None, placeholder="Enter")
+
+# --- Calculations ---
 tof = ramp - taxi if (ramp is not None and taxi is not None) else None
 fuel_awu = fuel_awu_lookup(tof) if tof is not None else 0.0
 tow = zfw + fuel_awu
+
+# --- Display Takeoff Fuel in same row style ---
+with fuel_cols[2]:
+    st.markdown("**Takeoff Fuel**")
+    if tof is not None:
+        st.text(f"{tof:,.1f}")
 
 # -------------------------
 # CG

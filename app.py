@@ -206,44 +206,41 @@ st.subheader("Fuel")
 
 fuel_cols = st.columns(4)
 
+# --- Inputs ---
 with fuel_cols[0]:
-    ramp = st.number_input("Ramp Fuel", min_value=0, value=None, placeholder="Enter")
+    ramp = st.number_input(
+        "Ramp Fuel",
+        min_value=0,
+        value=None,
+        placeholder="Enter"
+    )
 
 with fuel_cols[1]:
-    taxi = st.number_input("Taxi Fuel", min_value=0, value=None, placeholder="Enter")
+    taxi = st.number_input(
+        "Taxi Fuel",
+        min_value=0,
+        value=None,
+        placeholder="Enter"
+    )
 
-# -------------------------
-# TAKEOFF FUEL LOGIC
-# -------------------------
+# --- Takeoff Fuel Logic ---
 if ramp is not None:
     taxi_val = taxi if taxi is not None else 0
     tof = ramp - taxi_val
 else:
     tof = 0.0
 
-# -------------------------
-# DISPLAY (MATCH INPUT STYLE)
-# -------------------------
+# --- Display (ONLY ONE) ---
 with fuel_cols[2]:
     st.markdown("**Takeoff Fuel**")
     st.text(f"{tof:,.1f}")
 
 # -------------------------
-# DOWNSTREAM CALCS
+# DOWNSTREAM CALCULATIONS
 # -------------------------
+
 fuel_awu = fuel_awu_lookup(tof) if tof > 0 else 0.0
 tow = zfw + fuel_awu
-        
-# --- Calculations ---
-tof = ramp - taxi if (ramp is not None and taxi is not None) else None
-fuel_awu = fuel_awu_lookup(tof) if tof is not None else 0.0
-tow = zfw + fuel_awu
-
-# --- Display Takeoff Fuel in same row style ---
-with fuel_cols[2]:
-    st.markdown("**Takeoff Fuel**")
-    if tof is not None:
-        st.text(f"{tof:,.1f}")
 
 # -------------------------
 # CG

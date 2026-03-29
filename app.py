@@ -18,12 +18,39 @@ BOW = 129614.1
 def load_pax_data():
     return pd.read_csv("pax_data.csv")
 
+
 @st.cache_data
 def load_fuel_data():
     df = pd.read_csv("fuel_data.csv")
+
+    # Case 1: correct format
+    if "weight" in df.columns and "awu" in df.columns:
+        df["weight"] = df["weight"].astype(int)
+        df["awu"] = df["awu"].astype(float)
+        return df
+
+    # Case 2: two unnamed columns
+    if df.shape[1] == 2:
+        df.columns = ["weight", "awu"]
+        df["weight"] = df["weight"].astype(int)
+        df["awu"] = df["awu"].astype(float)
+        return df
+
+    # Case 3: single column (stacked OCR format)
+    df.columns = ["raw"]
+    df["raw"] = pd.to_numeric(df["raw"], errors="coerce")
+    df = df.dropna().reset_index(drop=True)
+
+    df = pd.DataFrame({
+        "weight": df["raw"].iloc[::2].values,
+        "awu": df["raw"].iloc[1::2].values
+    })
+
     df["weight"] = df["weight"].astype(int)
     df["awu"] = df["awu"].astype(float)
+
     return df
+
 
 pax_df = load_pax_data()
 fuel_df = load_fuel_data()
@@ -56,9 +83,7 @@ def pax_awu(zone, pax, season):
 
 
 def bag_awu(count):
-    if count is None:
-        return 0.0
-    return count * 32.0
+    return 0.0 if count is None else count * 32.0
 
 
 def cargo_awu_by_rule(table, weight):

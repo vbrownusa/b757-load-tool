@@ -237,31 +237,34 @@ tow_status, tow_color = cg_status(tow_cg, tow_fwd, tow_aft)
 col_left, col_right = st.columns(2)
 
 with col_left:
-    st.subheader("CG Limits")
+    st.markdown("### CG Limits")
 
-    st.markdown(f"""
-    <div style="font-family:monospace; line-height:1.1">
+    st.markdown(
+        f"""
+        <div style="font-family:monospace; line-height:1.0">
 
-    <b>ZFW</b><br>
-    CG: {zfw_cg:.1f}
-    <span style="color:{zfw_color}; font-weight:bold;
-    background-color:{'#e6ffe6' if zfw_color=='green' else '#ffe6e6'};
-    padding:2px 6px; border-radius:4px;">
-    {zfw_status}
-    </span><br>
-    Limits: {zfw_fwd:.1f} - {zfw_aft:.1f}<br><br>
+        <b>ZFW</b><br>
+        CG: {zfw_cg:6.1f}
+        <span style="color:{zfw_color}; font-weight:bold;
+        background-color:{'#e6ffe6' if zfw_color=='green' else '#ffe6e6'};
+        padding:2px 6px; border-radius:4px;">
+        {zfw_status}
+        </span><br>
+        Limits: {zfw_fwd:.1f} - {zfw_aft:.1f}<br><br>
 
-    <b>TOW</b><br>
-    CG: {tow_cg:.1f}
-    <span style="color:{tow_color}; font-weight:bold;
-    background-color:{'#e6ffe6' if tow_color=='green' else '#ffe6e6'};
-    padding:2px 6px; border-radius:4px;">
-    {tow_status}
-    </span><br>
-    Limits: {tow_fwd:.1f} - {tow_aft:.1f}
+        <b>TOW</b><br>
+        CG: {tow_cg:6.1f}
+        <span style="color:{tow_color}; font-weight:bold;
+        background-color:{'#e6ffe6' if tow_color=='green' else '#ffe6e6'};
+        padding:2px 6px; border-radius:4px;">
+        {tow_status}
+        </span><br>
+        Limits: {tow_fwd:.1f} - {tow_aft:.1f}
 
-    </div>
-    """, unsafe_allow_html=True)
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 with col_right:
     st.markdown("### Summary")
@@ -269,6 +272,15 @@ with col_right:
     label_width = 10
     num_width = 15
 
-    st.text(f"{'ZFW:':<{label_width}}{zfw:>{num_width},.1f}")
-    st.text(f"{'Fuel:':<{label_width}}{fuel_awu:>{num_width},.1f}")
-    st.text(f"{'TOW:':<{label_width}}{tow:>{num_width},.1f}")
+    st.markdown(
+        f"""
+        <div style="font-family:monospace; line-height:1.0">
+
+        {'ZFW:':<{label_width}}{zfw:>{num_width},.1f}<br>
+        {'Fuel:':<{label_width}}{fuel_awu:>{num_width},.1f}<br>
+        {'TOW:':<{label_width}}{tow:>{num_width},.1f}
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )

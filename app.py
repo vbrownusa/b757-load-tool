@@ -159,35 +159,6 @@ st.subheader("Baggage")
 cols = st.columns(4)
 
 with cols[0]:
-    c1 = st.number_input("Bin 1", min_value=0, value=0)
-    b1_awu = bag_awu(b1)   
-    st.caption(f"AWU: {c1_awu:.1f}")
-
-with cols[1]:
-    c2 = st.number_input("Bin 2", min_value=0, value=0)
-    c2_awu = cargo_awu_by_rule(CARGO_BIN2, c2)
-    st.caption(f"AWU: {c2_awu:.1f}")
-
-with cols[2]:
-    c3 = st.number_input("Bin 3", min_value=0, value=0)
-    c3_awu = cargo_awu_by_rule(CARGO_BIN3, c3)
-    st.caption(f"AWU: {c3_awu:.1f}")
-
-with cols[3]:
-    c4 = st.number_input("Bin 4", min_value=0, value=0)
-    c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
-    st.caption(f"AWU: {c4_awu:.1f}")
-
-
-# -------------------------
-# CARGO (your rule)
-# -------------------------
-
-st.subheader("Cargo")
-
-cols = st.columns(4)
-
-with cols[0]:
     b1 = st.number_input("Bin 1", 0, key="bag1")
     b1_awu = bag_awu(b1)
     st.caption(f"{b1_awu:.1f}")
@@ -206,6 +177,15 @@ with cols[3]:
     b4 = st.number_input("Bin 4", 0, key="bag4")
     b4_awu = bag_awu(b4)
     st.caption(f"{b4_awu:.1f}")
+
+
+# -------------------------
+# CARGO (your rule)
+# -------------------------
+
+st.subheader("Cargo")
+
+
 
 
 

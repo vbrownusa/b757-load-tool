@@ -4,6 +4,21 @@ import math
 
 st.set_page_config(layout="wide")
 
+
+st.markdown(
+    """
+    <style>
+        /* Reduce space above the main content */
+        .block-container {
+            padding-top: 0.5rem;
+            padding-bottom: 1rem;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # -------------------------
 # CONSTANTS
 # -------------------------

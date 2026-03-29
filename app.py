@@ -222,7 +222,7 @@ col_left, col_right = st.columns(2)
 
 with col_left:
 
-    st.subheader("Adjusted Weight Totals")
+    st.subheader("Fuel")
 
     cols = st.columns(4)
 

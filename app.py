@@ -264,14 +264,14 @@ with col_left:
     """, unsafe_allow_html=True)
 
 with col_right:
-    st.subheader("Summary")
+    st.markdown("### Summary")
 
     label_width = 12
     num_width = 16
 
     st.markdown(
         f"""
-        <div style="font-family:monospace; line-height:1.2">
+        <div style="font-family:monospace; line-height:1.1">
 
         {'ZFW:':<{label_width}}{zfw:>{num_width},.1f}<br>
         {'Fuel AWU:':<{label_width}}{fuel_awu:>{num_width},.1f}<br>

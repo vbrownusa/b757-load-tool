@@ -185,29 +185,27 @@ with cols[3]:
 
 st.subheader("Cargo")
 
-cargo_cols = st.columns(4)
+cols = st.columns(4)
 
-with cargo_cols[0]:
-    c1 = st.number_input("Bin 1", 0, key="cargo1")
-    c1_awu = cargo_awu_by_rule(CARGO_BIN1, c1)
-    st.caption(f"{c1_awu:.1f}")
+with cols[0]:
+    b1 = st.number_input("Bin 1", 0, key="bag1")
+    b1_awu = bag_awu(b1)
+    st.caption(f"{b1_awu:.1f}")
 
-with cargo_cols[1]:
-    c2 = st.number_input("Bin 2", 0, key="cargo2")
-    c2_awu = cargo_awu_by_rule(CARGO_BIN2, c2)
-    st.caption(f"{c2_awu:.1f}")
+with cols[1]:
+    b2 = st.number_input("Bin 2", 0, key="bag2")
+    b2_awu = bag_awu(b2)
+    st.caption(f"{b2_awu:.1f}")
 
-with cargo_cols[2]:
-    c3 = st.number_input("Bin 3", 0, key="cargo3")
-    c3_awu = cargo_awu_by_rule(CARGO_BIN3, c3)
-    st.caption(f"{c3_awu:.1f}")
+with cols[2]:
+    b3 = st.number_input("Bin 3", 0, key="bag3")
+    b3_awu = bag_awu(b3)
+    st.caption(f"{b3_awu:.1f}")
 
-with cargo_cols[3]:
-    c4 = st.number_input("Bin 4", 0, key="cargo4")
-    c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
-    st.caption(f"{c4_awu:.1f}")
-
-
+with cols[3]:
+    b4 = st.number_input("Bin 4", 0, key="bag4")
+    b4_awu = bag_awu(b4)
+    st.caption(f"{b4_awu:.1f}")
 
 
 

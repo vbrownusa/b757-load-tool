@@ -181,7 +181,7 @@ zfw = (
 # ZFW + FUEL
 # -------------------------
 
-st.subheader("ZFW / Fuel")
+st.subheader("TOTALS")
 
 col1, col2, col3 = st.columns(3)
 

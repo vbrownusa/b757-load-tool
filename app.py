@@ -218,10 +218,31 @@ zfw = (
 # ZFW / FUEL + CG LIMITS
 # -------------------------
 
+st.subheader("Fuel")
+
+# --- Global Fuel Inputs ---
+fuel_cols = st.columns(2)
+
+with fuel_cols[0]:
+    ramp_fuel = st.number_input("Ramp Fuel", 0, value=0, key="ramp")
+
+with fuel_cols[1]:
+    taxi_fuel = st.number_input("Taxi Fuel", 0, value=0, key="taxi")
+
+# --- Calculations (available to BOTH columns) ---
+tof = ramp_fuel - taxi_fuel
+takeoff_fuel_awu = fuel_awu_lookup(tof)
+tow = zfw + takeoff_fuel_awu
+
+st.write(f"Takeoff Fuel: {tof:,.1f}")
+
+st.markdown("---")
+
+# --- Two-column layout ---
 col_left, col_right = st.columns(2)
 
 # -------------------------
-# LEFT: CG LIMITS (moved here)
+# LEFT: CG LIMITS
 # -------------------------
 with col_left:
 
@@ -234,7 +255,7 @@ with col_left:
     tow_fwd_limit = 12.0
     tow_aft_limit = 42.0
 
-    # --- CALCULATIONS ---
+    # --- CG CALCULATIONS ---
     planned_zfw_cg = zfw % 100
     planned_tow_cg = tow % 100
 
@@ -259,28 +280,10 @@ with col_left:
 
 
 # -------------------------
-# RIGHT: ZFW / FUEL + SUMMARY (moved here)
+# RIGHT: SUMMARY
 # -------------------------
 with col_right:
 
-    st.subheader("Adjusted Weight Totals")
-
-    cols = st.columns(2)
-
-    with cols[0]:
-        ramp_fuel = st.number_input("Ramp Fuel", 0, value=0, key="ramp")
-        taxi_fuel = st.number_input("Taxi Fuel", 0, value=0, key="taxi")
-
-    # --- Calculations ---
-    tof = ramp_fuel - taxi_fuel
-    takeoff_fuel_awu = fuel_awu_lookup(tof)
-    tow = zfw + takeoff_fuel_awu
-
-    st.write(f"Takeoff Fuel: {tof:,.1f}")
-
-    st.markdown("---")
-
-    # --- Summary ---
     st.subheader("Summary")
 
     st.text(f"ZFW:       {zfw:,.1f}")

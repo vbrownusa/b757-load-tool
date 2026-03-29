@@ -256,4 +256,17 @@ st.write(f"Passengers AWU: {za + zb + zc:.1f}")
 st.write(f"Baggage AWU: {b1_awu + b2_awu + b3_awu + b4_awu:.1f}")
 st.write(f"Cargo AWU: {c1_awu + c2_awu + c3_awu + c4_awu:.1f}")
 
+st.subheader("ZFW")
+
+zfw = (
+    BOW
+    + za + zb + zc
+    + b1_awu + b2_awu + b3_awu + b4_awu
+    + c1_awu + c2_awu + c3_awu + c4_awu
+)
+
+st.write(f"{zfw:.1f}")
+
+
+
 st.divider()

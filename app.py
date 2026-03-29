@@ -220,8 +220,8 @@ zfw = (
 
 st.subheader("Fuel")
 
-# --- Global Fuel Inputs ---
-fuel_cols = st.columns(2)
+# --- Fuel inputs (match bin width) ---
+fuel_cols = st.columns(4)
 
 with fuel_cols[0]:
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=0, key="ramp")
@@ -229,7 +229,7 @@ with fuel_cols[0]:
 with fuel_cols[1]:
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=0, key="taxi")
 
-# --- Calculations (available to BOTH columns) ---
+# --- Calculations (global) ---
 tof = ramp_fuel - taxi_fuel
 takeoff_fuel_awu = fuel_awu_lookup(tof)
 tow = zfw + takeoff_fuel_awu

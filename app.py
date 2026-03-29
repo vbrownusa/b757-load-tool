@@ -225,7 +225,7 @@ col_left, col_right = st.columns(2)
 # -------------------------
 with col_left:
 
-    st.subheader("ADJUSTED WEIGHT TOTALS")
+    st.subheader("Adjusted Weight Totals")
 
     cols = st.columns(4)
 
@@ -264,7 +264,7 @@ with col_left:
 # -------------------------
 with col_right:
 
-    st.subheader("CG LIMITS")
+    st.subheader("CG Limits")
 
     # --- LIMITS (REPLACE LATER) ---
     zfw_fwd_limit = 10.0

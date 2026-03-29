@@ -250,6 +250,10 @@ def cargo_awu(weight):
 # TOTAL
 # -------------------------
 
+st.subheader("Summary")
 
+st.write(f"Passengers AWU: {za + zb + zc:.1f}")
+st.write(f"Baggage AWU: {b1_awu + b2_awu + b3_awu + b4_awu:.1f}")
+st.write(f"Cargo AWU: {c1_awu + c2_awu + c3_awu + c4_awu:.1f}")
 
 st.divider()

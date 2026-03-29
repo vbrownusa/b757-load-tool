@@ -218,9 +218,9 @@ zfw = (
 # ZFW / FUEL
 # -------------------------
 
-st.subheader("TOTALS")
+st.subheader("ZFW / Fuel")
 
-# Narrow input columns (like cargo bins)
+# --- Narrow inputs (same width style as bins) ---
 cols = st.columns(4)
 
 with cols[0]:
@@ -229,35 +229,25 @@ with cols[0]:
 with cols[1]:
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
 
-# Calculations
+# --- Calculations ---
 tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
 takeoff_fuel_awu = fuel_awu_lookup(tof)
 
-# Outputs
+zfw = (
+    BOW
+    + za + zb + zc
+    + b1_awu + b2_awu + b3_awu + b4_awu
+    + c1_awu + c2_awu + c3_awu + c4_awu
+)
 
+# --- Output (left) ---
+st.write(f"Takeoff Fuel: {tof:.1f}")
 
-with st.container():
-    st.markdown(
-        f"""
-        <div style="width:100%; display:flex; justify-content:flex-end;">
-            <div style="width:260px; font-family:monospace;">
-                
-                <div style="display:flex; justify-content:space-between;">
-                    <span>Takeoff Fuel AWU:</span>
-                    <span style="display:inline-block; width:100px; text-align:right;">
-                        {takeoff_fuel_awu:,.1f}
-                    </span>
-                </div>
+# --- Right-side aligned summary block ---
+col_left, col_right = st.columns([3, 1])
 
-                <div style="display:flex; justify-content:space-between; margin-top:-6px;">
-                    <span>ZFW:</span>
-                    <span style="display:inline-block; width:100px; text-align:right;">
-                        <b>{zfw:,.1f}</b>
-                    </span>
-                </div>
+with col_right:
+    st.markdown("**Summary**")
 
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.text(f"Fuel AWU:   {takeoff_fuel_awu:10,.1f}")
+    st.text(f"ZFW:        {zfw:10,.1f}")

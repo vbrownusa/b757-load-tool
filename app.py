@@ -239,7 +239,6 @@ def cargo_awu(weight):
 # TOTAL
 # -------------------------
 
-st.subheader("Passenger Total AWU")
-st.write(round(za + zb + zc, 1))
+
 
 st.divider()

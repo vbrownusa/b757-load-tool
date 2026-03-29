@@ -225,7 +225,7 @@ col_left, col_right = st.columns(2)
 # -------------------------
 with col_left:
 
-    st.subheader("Adj Weight Totals")
+    st.subheader("Fuel")
 
     cols = st.columns(2)
 
@@ -243,7 +243,7 @@ with col_left:
     st.markdown("---")
 
     # --- Summary ---
-    st.subheader("Summary")
+    st.subheader("Adj Weight Totals")
 
     st.text(f"ZFW:       {zfw:,.1f}")
     st.text(f"Fuel AWU:  {takeoff_fuel_awu:,.1f}")

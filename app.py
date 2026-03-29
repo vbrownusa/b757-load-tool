@@ -220,7 +220,7 @@ zfw = (
 
 st.subheader("ZFW / Fuel")
 
-# --- Narrow inputs (same width style as bins) ---
+# --- Narrow inputs (same width as bins) ---
 cols = st.columns(4)
 
 with cols[0]:
@@ -240,14 +240,11 @@ zfw = (
     + c1_awu + c2_awu + c3_awu + c4_awu
 )
 
-# --- Output (left) ---
+# --- Output ---
 st.write(f"Takeoff Fuel: {tof:.1f}")
 
-# --- Right-side aligned summary block ---
-col_left, col_right = st.columns([3, 1])
+# --- Left-side summary block ---
+st.markdown("**Summary**")
 
-with col_right:
-    st.markdown("**Summary**")
-
-    st.text(f"Fuel AWU:   {takeoff_fuel_awu:10,.1f}")
-    st.text(f"ZFW:        {zfw:10,.1f}")
+st.text(f"Fuel AWU:   {takeoff_fuel_awu:10,.1f}")
+st.text(f"ZFW:        {zfw:10,.1f}")

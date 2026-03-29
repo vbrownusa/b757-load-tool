@@ -266,28 +266,9 @@ with col_left:
 with col_right:
     st.markdown("### Summary")
 
-    st.markdown(
-        f"""
-<div style="width:100%; display:flex; justify-content:flex-end;">
-  <div style="width:260px; font-family:monospace; line-height:1.1;">
+    label_width = 10
+    num_width = 15
 
-    <div style="display:flex;">
-      <div style="flex:1;">ZFW:</div>
-      <div style="width:120px; text-align:right;">{zfw:,.1f}</div>
-    </div>
-
-    <div style="display:flex;">
-      <div style="flex:1;">Fuel:</div>
-      <div style="width:120px; text-align:right;">{fuel_awu:,.1f}</div>
-    </div>
-
-    <div style="display:flex;">
-      <div style="flex:1;">TOW:</div>
-      <div style="width:120px; text-align:right;">{tow:,.1f}</div>
-    </div>
-
-  </div>
-</div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.text(f"{'ZFW:':<{label_width}}{zfw:>{num_width},.1f}")
+    st.text(f"{'Fuel:':<{label_width}}{fuel_awu:>{num_width},.1f}")
+    st.text(f"{'TOW:':<{label_width}}{tow:>{num_width},.1f}")

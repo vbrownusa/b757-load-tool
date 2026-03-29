@@ -255,6 +255,8 @@ def cargo_awu(weight):
 # TOTAL
 # -------------------------
 
+st.divider()
+
 st.subheader("Summary")
 
 
@@ -271,4 +273,4 @@ st.write(f"{zfw:.1f}")
 
 
 
-st.divider()
+

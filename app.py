@@ -269,31 +269,25 @@ with col_right:
     st.markdown(
         f"""
 <div style="width:100%; display:flex; justify-content:flex-end;">
-    <div style="width:260px; font-family:monospace; line-height:1.2;">
+  <div style="width:260px; font-family:monospace; line-height:1.1;">
 
-        <div style="display:flex; justify-content:space-between;">
-            <span>ZFW:</span>
-            <span style="width:120px; text-align:right;">
-                {zfw:,.1f}
-            </span>
-        </div>
-
-        <div style="display:flex; justify-content:space-between;">
-            <span>Fuel:</span>
-            <span style="width:120px; text-align:right;">
-                {fuel_awu:,.1f}
-            </span>
-        </div>
-
-        <div style="display:flex; justify-content:space-between;">
-            <span>TOW:</span>
-            <span style="width:120px; text-align:right;">
-                {tow:,.1f}
-            </span>
-        </div>
-
+    <div style="display:flex;">
+      <div style="flex:1;">ZFW:</div>
+      <div style="width:120px; text-align:right;">{zfw:,.1f}</div>
     </div>
+
+    <div style="display:flex;">
+      <div style="flex:1;">Fuel:</div>
+      <div style="width:120px; text-align:right;">{fuel_awu:,.1f}</div>
+    </div>
+
+    <div style="display:flex;">
+      <div style="flex:1;">TOW:</div>
+      <div style="width:120px; text-align:right;">{tow:,.1f}</div>
+    </div>
+
+  </div>
 </div>
         """,
-        unsafe_allow_html=True  # 👈 THIS IS THE KEY
+        unsafe_allow_html=True
     )

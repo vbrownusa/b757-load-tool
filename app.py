@@ -246,5 +246,6 @@ st.write(f"Takeoff Fuel: {tof:.1f}")
 # --- Left-side summary block ---
 st.markdown("**Summary**")
 
-st.text(f"Fuel AWU:   {takeoff_fuel_awu:10,.1f}")
+
 st.text(f"ZFW:        {zfw:10,.1f}")
+st.text(f"Fuel AWU:   {takeoff_fuel_awu:10,.1f}")

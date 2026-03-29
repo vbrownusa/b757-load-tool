@@ -217,6 +217,15 @@ tof = ramp - taxi if (ramp is not None and taxi is not None) else None
 fuel_awu = fuel_awu_lookup(tof) if tof is not None else 0.0
 tow = zfw + fuel_awu
 
+with fuel_cols[2]:
+    st.write("Takeoff Fuel")  # 👈 matches Taxi Fuel font
+    if tof is not None:
+        st.text(f"{tof:,.1f}")
+# --- Calculations ---
+tof = ramp - taxi if (ramp is not None and taxi is not None) else None
+fuel_awu = fuel_awu_lookup(tof) if tof is not None else 0.0
+tow = zfw + fuel_awu
+
 # --- Display Takeoff Fuel in same row style ---
 with fuel_cols[2]:
     st.markdown("**Takeoff Fuel**")

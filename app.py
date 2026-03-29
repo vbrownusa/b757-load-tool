@@ -227,8 +227,9 @@ with col_left:
 
     st.subheader("Adjusted Weight Totals")
 
-    with cols[0]:
+    cols = st.columns(4)
 
+with cols[0]:
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
     tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0

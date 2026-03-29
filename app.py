@@ -251,12 +251,16 @@ with col_left:
     # --- Summary ---
     st.markdown("**Summary**")
 
-    label_width = 12
-    num_width = 14
-
-    st.text(f"{'ZFW:':<{label_width}}{zfw:>{num_width},.1f}")
-    st.text(f"{'Fuel AWU:':<{label_width}}{takeoff_fuel_awu:>{num_width},.1f}")
-    st.text(f"{'TOW:':<{label_width}}{tow:>{num_width},.1f}")
+    st.markdown(
+    f"""
+    <div style="font-family:monospace; line-height:1.1">
+    {'ZFW:':<10}{zfw:>12,.1f}<br>
+    {'Fuel AWU:':<10}{takeoff_fuel_awu:>12,.1f}<br>
+    {'TOW:':<10}{tow:>12,.1f}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # -------------------------

@@ -218,37 +218,46 @@ zfw = (
 # ZFW / FUEL + CG LIMITS
 # -------------------------
 
+col_left, col_right = st.columns(2)
+
+# -------------------------
+# LEFT: ZFW / FUEL
+# -------------------------
 with col_left:
 
     st.subheader("Adjusted Weight Totals")
 
-    cols = st.columns(4)
+    cols = st.columns(2)
 
     with cols[0]:
-        ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
-        taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
+        ramp_fuel = st.number_input("Ramp Fuel", 0, value=0, key="ramp")
+        taxi_fuel = st.number_input("Taxi Fuel", 0, value=0, key="taxi")
 
     # --- Calculations ---
-    tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0
+    tof = ramp_fuel - taxi_fuel
     takeoff_fuel_awu = fuel_awu_lookup(tof)
     tow = zfw + takeoff_fuel_awu
 
-    st.write(f"Takeoff Fuel: {tof:.1f}")
+    st.write(f"Takeoff Fuel: {tof:,.1f}")
+
+    st.markdown("---")
 
     # --- Summary ---
     st.subheader("Summary")
 
-    st.write(f"ZFW: {zfw:,.1f}")
-    st.write(f"Fuel AWU: {takeoff_fuel_awu:,.1f}")
-    st.write(f"TOW: {tow:,.1f}")
+    st.text(f"ZFW:       {zfw:,.1f}")
+    st.text(f"Fuel AWU:  {takeoff_fuel_awu:,.1f}")
+    st.text(f"TOW:       {tow:,.1f}")
+
+
 # -------------------------
-# RIGHT: CG LIMITS (TIGHT + COLORED STATUS)
+# RIGHT: CG LIMITS
 # -------------------------
 with col_right:
 
     st.subheader("CG Limits")
 
-    # --- LIMITS (REPLACE LATER) ---
+    # --- LIMITS (replace later with real envelope) ---
     zfw_fwd_limit = 10.0
     zfw_aft_limit = 40.0
 
@@ -259,36 +268,21 @@ with col_right:
     planned_zfw_cg = zfw % 100
     planned_tow_cg = tow % 100
 
-    # --- STATUS FUNCTION ---
     def cg_status(cg, fwd, aft):
         if cg < fwd:
-            return "OUTSIDE (FWD)", "red"
+            return "OUTSIDE (FWD)"
         elif cg > aft:
-            return "OUTSIDE (AFT)", "red"
+            return "OUTSIDE (AFT)"
         else:
-            return "WITHIN LIMITS", "green"
+            return "WITHIN LIMITS"
 
-    zfw_status, zfw_color = cg_status(planned_zfw_cg, zfw_fwd_limit, zfw_aft_limit)
-    tow_status, tow_color = cg_status(planned_tow_cg, tow_fwd_limit, tow_aft_limit)
+    zfw_status = cg_status(planned_zfw_cg, zfw_fwd_limit, zfw_aft_limit)
+    tow_status = cg_status(planned_tow_cg, tow_fwd_limit, tow_aft_limit)
 
-    # --- COMPACT DISPLAY ---
-    st.markdown(
-        f"""
-        <div style="font-family:monospace; line-height:1.2">
-        
-        <b>ZFW Limits</b><br>
-        ZFW Forward Limit: {zfw_fwd_limit:>6.1f}<br>
-        ZFW Aft Limit:     {zfw_aft_limit:>6.1f}<br>
-        Planned ZFW CG:    {planned_zfw_cg:>6.1f}<br>
-        Status:            <span style="color:{zfw_color}; font-weight:bold;">{zfw_status}</span><br><br>
+    st.text(f"ZFW CG: {planned_zfw_cg:.1f}  [{zfw_status}]")
+    st.text(f"Limits: {zfw_fwd_limit:.1f} - {zfw_aft_limit:.1f}")
 
-        <b>TOW Limits</b><br>
-        TOW Forward Limit: {tow_fwd_limit:>6.1f}<br>
-        TOW Aft Limit:     {tow_aft_limit:>6.1f}<br>
-        Planned TOW CG:    {planned_tow_cg:>6.1f}<br>
-        Status:            <span style="color:{tow_color}; font-weight:bold;">{tow_status}</span>
+    st.text("")
 
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.text(f"TOW CG: {planned_tow_cg:.1f}  [{tow_status}]")
+    st.text(f"Limits: {tow_fwd_limit:.1f} - {tow_aft_limit:.1f}")

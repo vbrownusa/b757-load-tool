@@ -235,7 +235,7 @@ takeoff_fuel_awu = fuel_awu_lookup(tof)
 
 # Outputs
 st.write(f"Takeoff Fuel: {tof:.1f}")
+st.write(f"ZFW: {zfw:.1f}")
 st.write(f"Takeoff Fuel AWU: {takeoff_fuel_awu:.1f}")
 
-# ZFW at bottom
-st.write(f"ZFW: {zfw:.1f}")
+

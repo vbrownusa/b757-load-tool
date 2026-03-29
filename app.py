@@ -266,6 +266,18 @@ with col_left:
 with col_right:
     st.subheader("Summary")
 
-    st.text(f"ZFW: {zfw:,.1f}")
-    st.text(f"Fuel AWU: {fuel_awu:,.1f}")
-    st.text(f"TOW: {tow:,.1f}")
+    label_width = 12
+    num_width = 16
+
+    st.markdown(
+        f"""
+        <div style="font-family:monospace; line-height:1.2">
+
+        {'ZFW:':<{label_width}}{zfw:>{num_width},.1f}<br>
+        {'Fuel AWU:':<{label_width}}{fuel_awu:>{num_width},.1f}<br>
+        {'TOW:':<{label_width}}{tow:>{num_width},.1f}
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )

@@ -255,19 +255,23 @@ def cargo_awu(weight):
 
 st.divider()
 
-st.subheader("Summary")
+# -------------------------
+# ZFW + FUEL
+# -------------------------
 
+st.subheader("ZFW / Fuel")
 
-st.subheader("ZFW")
+col1, col2, col3 = st.columns(3)
 
-zfw = (
-    BOW
-    + za + zb + zc
-    + b1_awu + b2_awu + b3_awu + b4_awu
-    + c1_awu + c2_awu + c3_awu + c4_awu
-)
+with col1:
+    st.markdown("**ZFW**")
+    st.write(f"{zfw:.1f}")
 
-st.write(f"{zfw:.1f}")
+with col2:
+    ramp_fuel = st.number_input("Ramp Fuel", min_value=0, value=None, key="ramp")
+    
+with col3:
+    taxi_fuel = st.number_input("Taxi Fuel", min_value=0, value=None, key="taxi")
 
 
 

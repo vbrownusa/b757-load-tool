@@ -235,9 +235,6 @@ def cargo_awu(weight):
     return awu_values[-1]
 
 
-
-
-
 # -------------------------
 # TOTAL
 # -------------------------
@@ -246,10 +243,3 @@ st.subheader("Passenger Total AWU")
 st.write(round(za + zb + zc, 1))
 
 st.divider()
-st.write("TEST")
-
-test_cols = st.columns(4)
-
-for i in range(4):
-    with test_cols[i]:
-        st.write(f"Col {i+1}")

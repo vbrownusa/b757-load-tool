@@ -268,32 +268,32 @@ with col_right:
 
     st.markdown(
         f"""
-        <div style="width:100%; display:flex; justify-content:flex-end;">
-            <div style="width:260px; font-family:monospace; line-height:1.2;">
+<div style="width:100%; display:flex; justify-content:flex-end;">
+    <div style="width:260px; font-family:monospace; line-height:1.2;">
 
-                <div style="display:flex; justify-content:space-between;">
-                    <span>ZFW:</span>
-                    <span style="display:inline-block; width:120px; text-align:right;">
-                        {zfw:,.1f}
-                    </span>
-                </div>
-
-                <div style="display:flex; justify-content:space-between;">
-                    <span>Fuel:</span>
-                    <span style="display:inline-block; width:120px; text-align:right;">
-                        {fuel_awu:,.1f}
-                    </span>
-                </div>
-
-                <div style="display:flex; justify-content:space-between;">
-                    <span>TOW:</span>
-                    <span style="display:inline-block; width:120px; text-align:right;">
-                        {tow:,.1f}
-                    </span>
-                </div>
-
-            </div>
+        <div style="display:flex; justify-content:space-between;">
+            <span>ZFW:</span>
+            <span style="width:120px; text-align:right;">
+                {zfw:,.1f}
+            </span>
         </div>
+
+        <div style="display:flex; justify-content:space-between;">
+            <span>Fuel:</span>
+            <span style="width:120px; text-align:right;">
+                {fuel_awu:,.1f}
+            </span>
+        </div>
+
+        <div style="display:flex; justify-content:space-between;">
+            <span>TOW:</span>
+            <span style="width:120px; text-align:right;">
+                {tow:,.1f}
+            </span>
+        </div>
+
+    </div>
+</div>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True  # 👈 THIS IS THE KEY
     )

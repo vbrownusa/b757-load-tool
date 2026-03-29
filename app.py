@@ -6,39 +6,24 @@ st.set_page_config(layout="wide")
 # CARGO AWU FUNCTION
 # -------------------------
 
-CARGO_BIN1 = {
-    200:299.6,
-    300:499.4,
-    400:699.1,
-    500:898.9,
-    600:1098.7,
-    700:1298.2,
-    800:1498.0,
-    900:1697.8,
-    1000:1897.5,
-}
-
-# for now (to avoid more errors), copy same table:
-CARGO_BIN2 = CARGO_BIN1
-CARGO_BIN3 = CARGO_BIN1
-CARGO_BIN4 = CARGO_BIN1
-
-
-
 def cargo_awu_by_rule(table, weight):
-    if weight <= 0:
+    if weight is None or weight <= 0:
         return 0.0
 
+    weight = int(weight)
+
+    # sort AWU values ascending
     awu_values = sorted(table.values())
 
     for awu in awu_values:
-        equiv = int(awu) - (int(awu) % 100)
+        # truncate last two digits (convert to usable weight)
+        equiv_lbs = int(awu) - (int(awu) % 100)
 
-        if equiv >= weight:
+        if weight <= equiv_lbs:
             return awu
 
+    # if above all ranges, return max
     return awu_values[-1]
-
 
 # -------------------------
 # LOAD DATA

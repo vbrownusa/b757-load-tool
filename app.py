@@ -212,19 +212,27 @@ with fuel_cols[0]:
 with fuel_cols[1]:
     taxi = st.number_input("Taxi Fuel", min_value=0, value=None, placeholder="Enter")
 
-# --- Calculations ONLY (no display) ---
-tof = ramp - taxi if (ramp is not None and taxi is not None) else None
-fuel_awu = fuel_awu_lookup(tof) if tof is not None else 0.0
-tow = zfw + fuel_awu
-# --- Calculations ---
-tof = ramp - taxi if (ramp is not None and taxi is not None) else None
-fuel_awu = fuel_awu_lookup(tof) if tof is not None else 0.0
-tow = zfw + fuel_awu
+# -------------------------
+# TAKEOFF FUEL LOGIC
+# -------------------------
+if ramp is not None:
+    taxi_val = taxi if taxi is not None else 0
+    tof = ramp - taxi_val
+else:
+    tof = 0.0
 
+# -------------------------
+# DISPLAY (MATCH INPUT STYLE)
+# -------------------------
 with fuel_cols[2]:
-    st.write("Takeoff Fuel")  
-    if tof is not None:
-        st.text(f"{tof:,.1f}")
+    st.markdown("**Takeoff Fuel**")
+    st.text(f"{tof:,.1f}")
+
+# -------------------------
+# DOWNSTREAM CALCS
+# -------------------------
+fuel_awu = fuel_awu_lookup(tof) if tof > 0 else 0.0
+tow = zfw + fuel_awu
         
 # --- Calculations ---
 tof = ramp - taxi if (ramp is not None and taxi is not None) else None

@@ -260,16 +260,13 @@ with col_left:
 
 
 # -------------------------
-# RIGHT: CG LIMITS
+# RIGHT: CG LIMITS (TIGHT + COLORED STATUS)
 # -------------------------
 with col_right:
 
     st.subheader("CG LIMITS")
 
-    label_width = 26
-    num_width = 8
-
-    # --- LIMITS (REPLACE WITH REAL LOGIC LATER) ---
+    # --- LIMITS (REPLACE LATER) ---
     zfw_fwd_limit = 10.0
     zfw_aft_limit = 40.0
 
@@ -283,31 +280,33 @@ with col_right:
     # --- STATUS FUNCTION ---
     def cg_status(cg, fwd, aft):
         if cg < fwd:
-            return "OUTSIDE (FWD)"
+            return "OUTSIDE (FWD)", "red"
         elif cg > aft:
-            return "OUTSIDE (AFT)"
+            return "OUTSIDE (AFT)", "red"
         else:
-            return "WITHIN LIMITS"
+            return "WITHIN LIMITS", "green"
 
-    zfw_status = cg_status(planned_zfw_cg, zfw_fwd_limit, zfw_aft_limit)
-    tow_status = cg_status(planned_tow_cg, tow_fwd_limit, tow_aft_limit)
+    zfw_status, zfw_color = cg_status(planned_zfw_cg, zfw_fwd_limit, zfw_aft_limit)
+    tow_status, tow_color = cg_status(planned_tow_cg, tow_fwd_limit, tow_aft_limit)
 
-    # -------------------------
-    # ZFW LIMITS
-    # -------------------------
-    st.markdown("**ZFW Limits**")
-    st.text(f"{'ZFW Forward Limit:':<{label_width}}{zfw_fwd_limit:>{num_width}.1f}")
-    st.text(f"{'ZFW Aft Limit:':<{label_width}}{zfw_aft_limit:>{num_width}.1f}")
-    st.text(f"{'Planned ZFW CG:':<{label_width}}{planned_zfw_cg:>{num_width}.1f}")
-    st.text(f"{'Status:':<{label_width}}{zfw_status}")
+    # --- COMPACT DISPLAY ---
+    st.markdown(
+        f"""
+        <div style="font-family:monospace; line-height:1.2">
+        
+        <b>ZFW Limits</b><br>
+        ZFW Forward Limit: {zfw_fwd_limit:>6.1f}<br>
+        ZFW Aft Limit:     {zfw_aft_limit:>6.1f}<br>
+        Planned ZFW CG:    {planned_zfw_cg:>6.1f}<br>
+        Status:            <span style="color:{zfw_color}; font-weight:bold;">{zfw_status}</span><br><br>
 
-    st.divider()
+        <b>TOW Limits</b><br>
+        TOW Forward Limit: {tow_fwd_limit:>6.1f}<br>
+        TOW Aft Limit:     {tow_aft_limit:>6.1f}<br>
+        Planned TOW CG:    {planned_tow_cg:>6.1f}<br>
+        Status:            <span style="color:{tow_color}; font-weight:bold;">{tow_status}</span>
 
-    # -------------------------
-    # TOW LIMITS
-    # -------------------------
-    st.markdown("**TOW Limits**")
-    st.text(f"{'TOW Forward Limit:':<{label_width}}{tow_fwd_limit:>{num_width}.1f}")
-    st.text(f"{'TOW Aft Limit:':<{label_width}}{tow_aft_limit:>{num_width}.1f}")
-    st.text(f"{'Planned TOW CG:':<{label_width}}{planned_tow_cg:>{num_width}.1f}")
-    st.text(f"{'Status:':<{label_width}}{tow_status}")
+        </div>
+        """,
+        unsafe_allow_html=True
+    )

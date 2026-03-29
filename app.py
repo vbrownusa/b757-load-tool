@@ -218,7 +218,7 @@ zfw = (
 # ZFW / FUEL
 # -------------------------
 
-st.subheader("ZFW / Fuel")
+st.subheader("TOTALS")
 
 # Narrow input columns (like cargo bins)
 cols = st.columns(4)

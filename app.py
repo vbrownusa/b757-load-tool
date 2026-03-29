@@ -270,7 +270,7 @@ with col_right:
     st.markdown("### Summary")
 
     label_width = 10
-    num_width = 15
+    num_width = 15  # 👈 controls alignment column
 
     st.markdown(
         f"""

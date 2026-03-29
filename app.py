@@ -234,8 +234,27 @@ tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not Non
 takeoff_fuel_awu = fuel_awu_lookup(tof)
 
 # Outputs
-st.write(f"Takeoff Fuel: {tof:.1f}")
-st.markdown(f"ZFW: {zfw:.1f}", unsafe_allow_html=True)
-st.markdown(f"<div style='margin-top:-10px'>Takeoff Fuel AWU: {takeoff_fuel_awu:.1f}</div>", unsafe_allow_html=True)
+st.markdown(
+    f"""
+    <div style="width:100%; display:flex; justify-content:flex-end;">
+        <div style="width:260px; font-family:monospace;">
+            
+            <div style="display:flex; justify-content:space-between;">
+                <span>Takeoff Fuel AWU:</span>
+                <span style="display:inline-block; width:100px; text-align:right;">
+                    {takeoff_fuel_awu:,.1f}
+                </span>
+            </div>
 
+            <div style="display:flex; justify-content:space-between; margin-top:-6px;">
+                <span>ZFW:</span>
+                <span style="display:inline-block; width:100px; text-align:right;">
+                    {zfw:,.1f}
+                </span>
+            </div>
 
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)

@@ -136,7 +136,7 @@ st.subheader("Passengers")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    a = int(st.number_input("Zone A Pax", 0, 54))
+    a = int(st.number_input("Zone A Pax",,54))
     za = pax_awu("A", a, season)
     st.caption(f"AWU: {za:.1f}")
 

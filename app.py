@@ -231,11 +231,14 @@ zfw_status, zfw_color = cg_status(zfw_cg, zfw_fwd, zfw_aft)
 tow_status, tow_color = cg_status(tow_cg, tow_fwd, tow_aft)
 
 # -------------------------
-# DISPLAY
+# DISPLAY: CG + SUMMARY + STAB TRIM
 # -------------------------
 
-col_left, col_right = st.columns(2)
+col_left, col_right, col_trim = st.columns(3)
 
+# -------------------------
+# LEFT: CG LIMITS
+# -------------------------
 with col_left:
     st.markdown("### CG Limits")
 
@@ -266,11 +269,14 @@ with col_left:
         unsafe_allow_html=True
     )
 
+# -------------------------
+# CENTER: SUMMARY (RIGHT-JUSTIFIED + TIGHT)
+# -------------------------
 with col_right:
     st.markdown("### Summary")
 
     label_width = 10
-    num_width = 15  # 👈 controls alignment column
+    num_width = 16
 
     st.markdown(
         f"""
@@ -279,6 +285,27 @@ with col_right:
         {'ZFW:':<{label_width}}{zfw:>{num_width},.1f}<br>
         {'Fuel:':<{label_width}}{fuel_awu:>{num_width},.1f}<br>
         {'TOW:':<{label_width}}{tow:>{num_width},.1f}
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# -------------------------
+# RIGHT: STAB TRIM (ALIGNED STYLE)
+# -------------------------
+with col_trim:
+    st.markdown("### Stab Trim")
+
+    label_width = 12
+    num_width = 8
+
+    st.markdown(
+        f"""
+        <div style="font-family:monospace; line-height:1.0">
+
+        {'ZFW Trim:':<{label_width}}{'--':>{num_width}}<br>
+        {'TOW Trim:':<{label_width}}{'--':>{num_width}}
 
         </div>
         """,

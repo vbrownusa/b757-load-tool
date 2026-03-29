@@ -225,7 +225,7 @@ col_left, col_right = st.columns(2)
 # -------------------------
 with col_left:
 
-    st.subheader("ZFW / Fuel")
+    st.subheader("TOTALS")
 
     cols = st.columns(4)
 

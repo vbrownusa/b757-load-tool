@@ -135,7 +135,7 @@ def cg_status(cg, fwd, aft):
 
 st.markdown(
     """
-    <div style="line-height:1.0;">
+    <div style="line-height:1.0; margin-bottom:20px;">
         <h1 style="margin-bottom:0px;">Weight and Balance</h1>
         <div style="margin-top:-8px; font-size:18px;">
             B757-200 Adj BOW 129614.1

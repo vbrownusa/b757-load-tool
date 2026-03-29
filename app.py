@@ -266,6 +266,14 @@ with col_right:
 
     st.subheader("CG LIMITS")
 
-    # placeholder (we'll build this next)
-    st.write("Forward Limit:")
-    st.write("Aft Limit:")
+    # --- ZFW LIMITS ---
+    st.markdown("**ZFW Limits**")
+    st.write("ZFW Forward Limit:")
+    st.write("ZFW Aft Limit:")
+
+    st.divider()
+
+    # --- TOW LIMITS ---
+    st.markdown("**TOW Limits**")
+    st.write("TOW Forward Limit:")
+    st.write("TOW Aft Limit:")

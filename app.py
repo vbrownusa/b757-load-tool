@@ -247,9 +247,14 @@ st.write(f"Takeoff Fuel: {tof:.1f}")
 # --- Left-side summary block ---
 # --- Left-side summary block ---
 # --- Left-side summary block ---
+# --- Left-side summary block ---
 st.markdown("**Summary**")
 
-num_width = 14  # controls right alignment column
+label_width = 12
+num_width = 14
 
-st.text(f"{'ZFW:':<12}{zfw:>{num_width},.1f}")
-st.text(f"{'Fuel AWU:':<12}{takeoff_fuel_awu:>{num_width},.1f}")
+tow = zfw + takeoff_fuel_awu
+
+st.text(f"{'ZFW:':<{label_width}}{zfw:>{num_width},.1f}")
+st.text(f"{'Fuel AWU:':<{label_width}}{takeoff_fuel_awu:>{num_width},.1f}")
+st.text(f"{'TOW:':<{label_width}}{tow:>{num_width},.1f}")

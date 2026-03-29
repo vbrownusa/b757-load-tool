@@ -136,7 +136,7 @@ st.subheader("Passengers")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    a = int(st.number_input("Zone A Pax",,54))
+    a = int(st.number_input("Zone A Pax",0,54))
     za = pax_awu("A", a, season)
     st.caption(f"AWU: {za:.1f}")
 
@@ -160,7 +160,7 @@ cols = st.columns(4)
 
 with cols[0]:
     c1 = st.number_input("Bin 1", min_value=0, value=0)
-    c1_awu = cargo_awu_by_rule(CARGO_BIN1, c1)
+    b1_awu = bag_awu(b1)   
     st.caption(f"AWU: {c1_awu:.1f}")
 
 with cols[1]:

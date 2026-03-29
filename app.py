@@ -220,9 +220,14 @@ zfw = (
 
 st.subheader("ZFW / Fuel")
 
-# Fuel inputs (full width, left aligned)
-ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
-taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
+# Narrow input columns (like cargo bins)
+col1, col2 = st.columns(4)
+
+with col1:
+    ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
+
+with col2:
+    taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
 
 # Calculations
 tof = (ramp_fuel - taxi_fuel) if (ramp_fuel is not None and taxi_fuel is not None) else 0.0

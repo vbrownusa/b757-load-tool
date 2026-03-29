@@ -180,7 +180,7 @@ with cols[3]:
 
 
 # -------------------------
-# CARGO (your rule)
+# CARGO
 # -------------------------
 
 st.subheader("Cargo")
@@ -188,23 +188,23 @@ st.subheader("Cargo")
 cargo_cols = st.columns(4)
 
 with cargo_cols[0]:
-    c1 = st.number_input("Bin 1", 0, key="cargo1")
-    c1_awu = cargo_awu_by_rule(CARGO_BIN1, c1)
+    c1 = st.number_input("Bin 1", min_value=0, value=None, key="cargo1")
+    c1_awu = cargo_awu_by_rule(CARGO_BIN1, int(c1)) if c1 is not None else 0.0
     st.caption(f"{c1_awu:.1f}")
 
 with cargo_cols[1]:
-    c2 = st.number_input("Bin 2", 0, key="cargo2")
-    c2_awu = cargo_awu_by_rule(CARGO_BIN2, c2)
+    c2 = st.number_input("Bin 2", min_value=0, value=None, key="cargo2")
+    c2_awu = cargo_awu_by_rule(CARGO_BIN2, int(c2)) if c2 is not None else 0.0
     st.caption(f"{c2_awu:.1f}")
 
 with cargo_cols[2]:
-    c3 = st.number_input("Bin 3", 0, key="cargo3")
-    c3_awu = cargo_awu_by_rule(CARGO_BIN3, c3)
+    c3 = st.number_input("Bin 3", min_value=0, value=None, key="cargo3")
+    c3_awu = cargo_awu_by_rule(CARGO_BIN3, int(c3)) if c3 is not None else 0.0
     st.caption(f"{c3_awu:.1f}")
 
 with cargo_cols[3]:
-    c4 = st.number_input("Bin 4", 0, key="cargo4")
-    c4_awu = cargo_awu_by_rule(CARGO_BIN4, c4)
+    c4 = st.number_input("Bin 4", min_value=0, value=None, key="cargo4")
+    c4_awu = cargo_awu_by_rule(CARGO_BIN4, int(c4)) if c4 is not None else 0.0
     st.caption(f"{c4_awu:.1f}")
 
 

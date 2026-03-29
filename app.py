@@ -266,23 +266,48 @@ with col_right:
 
     st.subheader("CG LIMITS")
 
-    label_width = 24
+    label_width = 26
     num_width = 8
+
+    # --- LIMITS (REPLACE WITH REAL LOGIC LATER) ---
+    zfw_fwd_limit = 10.0
+    zfw_aft_limit = 40.0
+
+    tow_fwd_limit = 12.0
+    tow_aft_limit = 42.0
 
     # --- CALCULATIONS ---
     planned_zfw_cg = zfw % 100
     planned_tow_cg = tow % 100
 
-    # --- ZFW LIMITS ---
+    # --- STATUS FUNCTION ---
+    def cg_status(cg, fwd, aft):
+        if cg < fwd:
+            return "OUTSIDE (FWD)"
+        elif cg > aft:
+            return "OUTSIDE (AFT)"
+        else:
+            return "WITHIN LIMITS"
+
+    zfw_status = cg_status(planned_zfw_cg, zfw_fwd_limit, zfw_aft_limit)
+    tow_status = cg_status(planned_tow_cg, tow_fwd_limit, tow_aft_limit)
+
+    # -------------------------
+    # ZFW LIMITS
+    # -------------------------
     st.markdown("**ZFW Limits**")
-    st.text(f"{'ZFW Forward Limit:':<{label_width}}")
-    st.text(f"{'ZFW Aft Limit:':<{label_width}}")
+    st.text(f"{'ZFW Forward Limit:':<{label_width}}{zfw_fwd_limit:>{num_width}.1f}")
+    st.text(f"{'ZFW Aft Limit:':<{label_width}}{zfw_aft_limit:>{num_width}.1f}")
     st.text(f"{'Planned ZFW CG:':<{label_width}}{planned_zfw_cg:>{num_width}.1f}")
+    st.text(f"{'Status:':<{label_width}}{zfw_status}")
 
     st.divider()
 
-    # --- TOW LIMITS ---
+    # -------------------------
+    # TOW LIMITS
+    # -------------------------
     st.markdown("**TOW Limits**")
-    st.text(f"{'TOW Forward Limit:':<{label_width}}")
-    st.text(f"{'TOW Aft Limit:':<{label_width}}")
+    st.text(f"{'TOW Forward Limit:':<{label_width}}{tow_fwd_limit:>{num_width}.1f}")
+    st.text(f"{'TOW Aft Limit:':<{label_width}}{tow_aft_limit:>{num_width}.1f}")
     st.text(f"{'Planned TOW CG:':<{label_width}}{planned_tow_cg:>{num_width}.1f}")
+    st.text(f"{'Status:':<{label_width}}{tow_status}")

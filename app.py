@@ -135,7 +135,7 @@ season = st.radio("Season", ["summer", "winter"])
 # -------------------------
 # PASSENGERS
 # -------------------------
-
+st.divider()
 st.subheader("Passengers")
 
 col1, col2, col3 = st.columns(3)
@@ -158,7 +158,7 @@ with col3:
 # -------------------------
 # BAGGAGE
 # -------------------------
-
+st.divider()
 st.subheader("Baggage")
 
 cols = st.columns(4)
@@ -187,7 +187,7 @@ with cols[3]:
 # -------------------------
 # CARGO
 # -------------------------
-
+st.divider()
 st.subheader("Cargo")
 
 cargo_cols = st.columns(4)

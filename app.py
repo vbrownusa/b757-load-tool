@@ -10,7 +10,7 @@ st.markdown(
     <style>
         /* Reduce space above the main content */
         .block-container {
-            padding-top: 0.5rem;
+            padding-top: 0.8rem;
             padding-bottom: 1rem;
         }
     </style>

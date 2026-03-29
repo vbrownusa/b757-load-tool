@@ -225,8 +225,6 @@ cols = st.columns(4)
 
 with cols[0]:
     ramp_fuel = st.number_input("Ramp Fuel", 0, value=None, key="ramp")
-
-with cols[1]:
     taxi_fuel = st.number_input("Taxi Fuel", 0, value=None, key="taxi")
 
 # --- Calculations ---

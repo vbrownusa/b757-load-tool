@@ -212,8 +212,7 @@ zfw = (
     + za + zb + zc
     + b1_awu + b2_awu + b3_awu + b4_awu
     + c1_awu + c2_awu + c3_awu + c4_awu
-)
-# -------------------------
+)# -------------------------
 # ZFW / FUEL + CG LIMITS
 # -------------------------
 
@@ -236,9 +235,16 @@ tof = ramp_fuel - taxi_fuel
 takeoff_fuel_awu = fuel_awu_lookup(tof)
 tow = zfw + takeoff_fuel_awu
 
-# --- Takeoff Fuel value under label ---
+# --- Inline TOF value (aligned with inputs) ---
 with fuel_cols[2]:
-    st.text(f"{tof:,.1f}")
+    st.markdown(
+        f"""
+        <div style="font-size:16px; margin-top:-8px;">
+        {tof:,.1f}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 st.markdown("---")
 

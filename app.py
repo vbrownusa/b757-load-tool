@@ -3,7 +3,35 @@ import pandas as pd
 import math
 
 st.set_page_config(layout="wide")
+st.markdown(
+    """
+    <style>
+        /* Remove top padding */
+        .block-container {
+            padding-top: 0.5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
 
+        /* Collapse sidebar space */
+        section[data-testid="stSidebar"] {
+            display: none;
+        }
+
+        /* Remove the gap where sidebar was */
+        .main {
+            margin-left: 0rem;
+        }
+
+        /* Expand main content to full width */
+        section[data-testid="stAppViewContainer"] {
+            padding-left: 0rem;
+            padding-right: 0rem;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown(
     """

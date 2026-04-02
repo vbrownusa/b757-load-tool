@@ -45,7 +45,14 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
+st.markdown(
+    """
+    <div style="font-size:12px; text-align:left; margin-top:-10px; margin-bottom:0px;">
+        © Vinton Brown
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # -------------------------
 # CONSTANTS
@@ -187,14 +194,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    """
-    <div style="font-size:12px; text-align:right; margin-top:-10px;">
-        © Vinton Brown
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+
 season = st.radio("Season", ["summer", "winter"])
 
 # -------------------------
